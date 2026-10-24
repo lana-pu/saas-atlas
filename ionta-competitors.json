@@ -1,0 +1,233 @@
+{
+  "title": "Ionta competitive research: current products and UX patterns",
+  "as_of": "2026-10-25",
+  "project": "Ionta",
+  "scope": "Freelancer-first relationship and client-work management. Channels: Gmail and WhatsApp; core product concepts: People, Inbox, Today, Tasks, Ask ledger, AI Advisor, and proposed Work Clusters.",
+  "method": "Public primary documentation and visible product screenshots. Confirmed features are separated from UX hypotheses. A screenshot may depict a different version from the current feature docs.",
+  "segments": [
+    "Direct: contact-centered CRM",
+    "Direct: freelancer client management",
+    "Direct: unified inbox / communications",
+    "Adjacent: AI-first email",
+    "Adjacent: B2B customer workflows",
+    "Adjacent: task extraction/daily planning"
+  ],
+  "competitors": [
+    {
+      "id": "folk",
+      "name": "folk CRM",
+      "tier": "Direct / person-first",
+      "focus": "Contact-centric activity timeline; AI recap and smart fields",
+      "verified": [
+        "Email and WhatsApp interactions are available on a contact profile.",
+        "Recap Assistant summarizes latest interactions, decisions and next steps on demand.",
+        "A mobile contacts app is documented from July 2026."
+      ],
+      "limitations": [
+        "Recaps are generated on demand and require refresh.",
+        "Designed around sales/networking; freelancer delivery tracking not demonstrated.",
+        "WhatsApp integration scope is plan-dependent (Standard limits synced accounts)."
+      ],
+      "ionta_questions": [
+        "Is Ionta's client status persistent and operational rather than just recap text?",
+        "Can a follow-up be checked off and reopened on the same client?",
+        "How do linked emails/WhatsApp become a single client work unit?"
+      ],
+      "pattern_ids": [
+        "folk-contact-activity"
+      ],
+      "sources": [
+        "https://help.folk.app/en/articles/5007315-track-interactions-emails-calendar-events-whatsapp-conversations",
+        "https://help.folk.app/en/articles/12893225-recap-assistant",
+        "https://help.folk.app/en/articles/15179426-people-company-profiles-on-mobile",
+        "https://help.folk.app/en/articles/11401724-import-contacts-from-whatsapp"
+      ]
+    },
+    {
+      "id": "moxie",
+      "name": "Moxie V4",
+      "tier": "Direct / freelancer-first",
+      "focus": "Inbox + contact timeline + work creation",
+      "verified": [
+        "Inbox Messages combines email, text and call history; Tickets manage client requests.",
+        "From a conversation, users can create a Project, Task, Ticket or Opportunity with source context.",
+        "Client/contact page combines related emails, texts, calls and tickets; linked tickets/tasks preserve context.",
+        "Moxie has AI summaries and MCP integrations for client/project work."
+      ],
+      "limitations": [
+        "This is not proof of personal WhatsApp channel integration.",
+        "Work creation is a deliberate user action; automation across fragmented threads is not established by these docs."
+      ],
+      "ionta_questions": [
+        "Could Ionta's Work Cluster merge successive changes automatically rather than duplicating records?",
+        "Can an Ask remain separate from the delivery Task while sharing status and provenance?",
+        "How does client-side waiting/approval state become visible in Today?"
+      ],
+      "pattern_ids": [],
+      "sources": [
+        "https://help.withmoxie.com/en/articles/16181668-understand-inbox-communications",
+        "https://help.withmoxie.com/en/articles/16740165-create-work-from-an-inbox-conversation",
+        "https://help.withmoxie.com/en/articles/16181676-work-inside-a-ticket",
+        "https://help.withmoxie.com/en/articles/16179851-communicate-with-a-client-or-contact"
+      ]
+    },
+    {
+      "id": "missive",
+      "name": "Missive",
+      "tier": "Direct / inbox mechanics",
+      "focus": "Conversation to work; inbox and task statuses; AI extraction",
+      "verified": [
+        "Unified inbox for email, SMS, WhatsApp and other channels.",
+        "Conversation tasks, subtasks and standalone tasks share one Tasks view.",
+        "AI Rules can add tasks from a message and label/summarize messages."
+      ],
+      "limitations": [
+        "Primary architecture is collaborative inboxes/teams.",
+        "Being able to create tasks does not establish cross-thread project/work clustering."
+      ],
+      "ionta_questions": [
+        "How can Ionta avoid Ask, Task and Work Cluster all looking like separate tasks?",
+        "Does a client-request remain visible as an event and as a live work item without duplication?"
+      ],
+      "pattern_ids": [
+        "missive-tasks-view"
+      ],
+      "sources": [
+        "https://missiveapp.com/docs/get-started/missive-interface",
+        "https://missiveapp.com/docs/core-features/tasks",
+        "https://missiveapp.com/docs/advanced-features/rules/ai-rules"
+      ]
+    },
+    {
+      "id": "front",
+      "name": "Front",
+      "tier": "Direct / cross-channel contact",
+      "focus": "Contact conversations, waiting states, unified support inbox",
+      "verified": [
+        "Contact Conversations can list email/text and other permitted channels by contact.",
+        "Inbox can be segmented into Open/Waiting/Resolved."
+      ],
+      "limitations": [
+        "Contact tab groups by conversation rather than merging all message events into one timeline.",
+        "Designed primarily for team shared inbox workflows."
+      ],
+      "ionta_questions": [
+        "Should waiting status be attached to a client, conversation or extracted work object?",
+        "How do users move between per-client history and priority queue?"
+      ],
+      "pattern_ids": [
+        "front-waiting-tabs"
+      ],
+      "sources": [
+        "https://help.front.com/en/articles/2226",
+        "https://help.front.com/en/articles/2159"
+      ]
+    },
+    {
+      "id": "shortwave",
+      "name": "Shortwave",
+      "tier": "Adjacent / AI-first",
+      "focus": "AI triage plan, proposed actions and follow-up queries",
+      "verified": [
+        "AI assistant can suggest grouped inbox actions for approval.",
+        "Can identify action items from threads and follow-ups needing attention."
+      ],
+      "limitations": [
+        "Email-centered rather than full Gmail/WhatsApp client workspace."
+      ],
+      "ionta_questions": [
+        "Should AI recommendations first appear as reviewable suggested actions instead of automatically created tasks?",
+        "How does evidence/source appear with each suggestion?"
+      ],
+      "pattern_ids": [
+        "shortwave-ai-plan"
+      ],
+      "sources": [
+        "https://www.shortwave.com/docs/guides/ai-assistant/"
+      ]
+    },
+    {
+      "id": "pylon",
+      "name": "Pylon",
+      "tier": "Adjacent / B2B customer work",
+      "focus": "Customer context, Waiting on You / Waiting on Customer operational status",
+      "verified": [
+        "Cross-channel B2B support issues represent client work.",
+        "Issue boards present Waiting on You / Waiting on Customer groupings."
+      ],
+      "limitations": [
+        "Enterprise support audience, not solo freelancer; ticket-centric."
+      ],
+      "ionta_questions": [
+        "Use turn-state as a first-class status, not just unread.",
+        "Should waiting status be derived or editable?"
+      ],
+      "pattern_ids": [
+        "pylon-waiting-columns"
+      ],
+      "sources": [
+        "https://www.usepylon.com/blog/slack-microsoft-teams-integration-a-breakdown-of-options",
+        "https://www.usepylon.com/"
+      ]
+    },
+    {
+      "id": "kustomer",
+      "name": "Kustomer",
+      "tier": "Adjacent / architectural",
+      "focus": "Chronological omnichannel timeline per customer",
+      "verified": [
+        "Customer timeline version 1 displays channel events chronologically on customer record."
+      ],
+      "limitations": [
+        "The cited documentation is for timeline V1; do not claim this is the latest interface.",
+        "Large-team customer support product."
+      ],
+      "ionta_questions": [
+        "How can Ionta merge source interactions into one chronology while distinguishing conversation vs work-event?",
+        "How is provenance shown on messages?"
+      ],
+      "pattern_ids": [],
+      "sources": [
+        "https://help.kustomer.com/customer-timeline-SyRfAErUW"
+      ]
+    },
+    {
+      "id": "sunsama",
+      "name": "Sunsama",
+      "tier": "Adjacent / daily execution",
+      "focus": "Email becomes task, keeps original thread and syncs completion states",
+      "verified": [
+        "Users can drag Gmail email into task list and embed email thread context.",
+        "Actions can be set on importing and completing linked tasks."
+      ],
+      "limitations": [
+        "Explicit import; not designed around person-first omnichannel relationship or inferred Ask-ledger."
+      ],
+      "ionta_questions": [
+        "How should Ionta capture source links and send action completion back to original message?",
+        "How do Today and Inbox stay synchronized without redundant reminders?"
+      ],
+      "pattern_ids": [],
+      "sources": [
+        "https://help.sunsama.com/docs/integrations/gmail/"
+      ]
+    }
+  ],
+  "synthesis": {
+    "updated_competitive_risks": [
+      "folk has mobile and AI Recap Assistant, contrary to earlier Ionta case study summary.",
+      "Moxie V4 now documents unified email/text/call Inbox, contact timeline and conversation-to-work conversion.",
+      "Missive now documents AI action-item extraction and three task types."
+    ],
+    "hypotheses_not_verified_as_unique": [
+      "Persistent, multi-channel client turn-state with actionable follow-up, not merely interaction recap.",
+      "Automatic grouping of successive requests/revisions into one Work Cluster with delivery, reopen, cancellation history.",
+      "Unified Ask-ledger and Task representation without multiple duplicate entities."
+    ],
+    "next_research_tasks": [
+      "Run an identical Sarah-client journey in folk, Missive and Moxie with source-linked screenshots.",
+      "Probe identity merge & WhatsApp ingestion boundaries, status inference, handling corrections and reopened requests.",
+      "Observe real freelancers to determine whether a client-centric view improves finding next action over inbox-first views."
+    ]
+  }
+}
