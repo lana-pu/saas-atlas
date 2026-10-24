@@ -105,6 +105,56 @@
         "retool-explorer",
         "retool-builder"
       ]
+    },
+    {
+      "id": "folk",
+      "name": "folk",
+      "category": "Клиентская CRM",
+      "summary": "История взаимодействий Gmail, WhatsApp и LinkedIn по контакту",
+      "style": "Light, editorial, person-first",
+      "pattern_ids": [
+        "folk-contact-activity"
+      ]
+    },
+    {
+      "id": "missive",
+      "name": "Missive",
+      "category": "Мультиканальный Inbox",
+      "summary": "Объединённые сообщения, конвертация переписки в отслеживаемую задачу",
+      "style": "Compact, operational, multi-pane",
+      "pattern_ids": [
+        "missive-tasks-view"
+      ]
+    },
+    {
+      "id": "front",
+      "name": "Front",
+      "category": "Inbox / клиентский контекст",
+      "summary": "Очереди, статусы, контекст и история переписок клиента",
+      "style": "Productive, structured, dense",
+      "pattern_ids": [
+        "front-waiting-tabs"
+      ]
+    },
+    {
+      "id": "shortwave",
+      "name": "Shortwave",
+      "category": "AI-inbox",
+      "summary": "AI-предложения и выполнение действий с подтверждением",
+      "style": "Modern, calm, AI-first",
+      "pattern_ids": [
+        "shortwave-ai-plan"
+      ]
+    },
+    {
+      "id": "pylon",
+      "name": "Pylon",
+      "category": "Customer work",
+      "summary": "Рабочие очереди по тому, кто должен действовать следующим",
+      "style": "Operational, status-forward",
+      "pattern_ids": [
+        "pylon-waiting-columns"
+      ]
     }
   ],
   "patterns": [
@@ -458,6 +508,86 @@
       "apply": "Internal tool builders, CMS, backoffice",
       "focus": "center",
       "note": "Официальный продуктовый материал Retool.",
+      "origin": "official"
+    },
+    {
+      "id": "folk-contact-activity",
+      "product": "folk",
+      "title": "Карточка клиента и история взаимодействий",
+      "tag": "Клиентский контекст",
+      "year": 2026,
+      "image_url": "https://cdn.prod.website-files.com/626be00c396339c5a816353b/69807d684de62f9c593ddf7e_hero-lp.webp",
+      "image_local": "assets/folk-contact-activity.jpg",
+      "source_url": "https://www.folk.app/crm-for-x/gmail",
+      "what": "В реальном интерфейсе справа открыта карточка контакта: quick actions и объединённый Activity с WhatsApp, Gmail и LinkedIn.",
+      "why": "История сосредоточена вокруг человека, а не канала. Это прямое сравнение с Ionta People и unified timeline.",
+      "apply": "People: timeline, channel badges, next contact context",
+      "focus": "right",
+      "note": "Официальная продуктовая иллюстрация на сайте folk (2026); кадр показывает часть интерфейса, а не полный сценарий.",
+      "origin": "official"
+    },
+    {
+      "id": "missive-tasks-view",
+      "product": "Missive",
+      "title": "Переписки и задачи в одном Tasks view",
+      "tag": "Из сообщений в работу",
+      "year": 2026,
+      "image_url": "https://missiveapp.com/docs/~gitbook/image?dpr=3&quality=100&sign=6b8eb715&sv=2&url=https%3A%2F%2F3242897856-files.gitbook.io%2F~%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F1If7JwIQhfz5wGM9LiIU%252Fuploads%252Fgit-blob-ae79994a3372cce7079ac81530ee5d0f3460b4bf%252Fguides-my-tasks.png%3Falt%3Dmedia&width=768",
+      "image_local": "assets/missive-tasks-view.jpg",
+      "source_url": "https://missiveapp.com/docs/core-features/tasks",
+      "what": "Задачи и назначенные разговоры показаны как To do / In progress / Closed с датами, ярлыками и ответственными.",
+      "why": "Переписка превращается в управляемую единицу работы; сравнить с Ionta Ask, Task и Work Clusters, избегая дублирования.",
+      "apply": "Today, Tasks, Ask ledger, Work Clusters — отображение и закрытие",
+      "focus": "center",
+      "note": "Официальная документация Missive. На экране основная задача и статусная группировка.",
+      "origin": "official"
+    },
+    {
+      "id": "front-waiting-tabs",
+      "product": "Front",
+      "title": "Статусы переписок: Open / Waiting / Resolved",
+      "tag": "Статусы",
+      "year": 2026,
+      "image_url": "https://usw1.frontkb-cdn.com/attachments/11/1/429e9ec0-493c-4b64-bfd1-92717346025e.png",
+      "image_local": "assets/front-waiting-tabs.jpg",
+      "source_url": "https://help.front.com/en/articles/2159",
+      "what": "Над списком разговоров — быстрые представления Open, Waiting и Resolved, отдельные счётчики очередей в левой панели.",
+      "why": "Нужное действие определяется состоянием, а не только непрочитанностью. Сравнить с turn-state и follow-up в Ionta.",
+      "apply": "Today/Inbox: Waiting on client / Waiting on me; сохранённые фильтры",
+      "focus": "top",
+      "note": "Официальный скриншот Front Help Center; это очередь командной поддержки, а не персональная CRM.",
+      "origin": "official"
+    },
+    {
+      "id": "shortwave-ai-plan",
+      "product": "Shortwave",
+      "title": "AI-план с подтверждаемыми действиями",
+      "tag": "AI-рекомендации",
+      "year": 2026,
+      "image_url": "https://images.ctfassets.net/lzny33ho1g45/4CYtib7O6sVKEmyTXkdAcZ/2f15e1c3a6af1a3330c157debda178d1/image7.jpeg",
+      "image_local": "assets/shortwave-ai-plan.jpg",
+      "source_url": "https://www.shortwave.com/docs/guides/ai-assistant/",
+      "what": "В отдельной AI-панели предложен план обработки входящих с перечнем писем и кнопкой Mark done для подтверждения действия.",
+      "why": "AI предлагает изменения, но человек контролирует применение. Это близко к принципу review/accept у TaskSuggestion.",
+      "apply": "AI Advisor; review-before-action; массовое подтверждение по смысловым группам",
+      "focus": "left",
+      "note": "Скриншот интерфейса Shortwave опубликован в обзоре Zapier; функции подтверждены в официальной документации.",
+      "origin": "secondary"
+    },
+    {
+      "id": "pylon-waiting-columns",
+      "product": "Pylon",
+      "title": "Waiting on You / Waiting on Customer",
+      "tag": "Статусы",
+      "year": 2026,
+      "image_url": "https://cdn.prod.website-files.com/6890c3359b2bc255b3a2df8c/68a3ece5dc85b33088dfccdb_JkPkIysAYzZ6GqPbqz9KTQOEXA.jpeg",
+      "image_local": "assets/pylon-waiting-columns.jpg",
+      "source_url": "https://www.usepylon.com/blog/slack-microsoft-teams-integration-a-breakdown-of-options",
+      "what": "Столбцы рабочего списка названы не только этапом, но и стороной, от которой ждут действия: Waiting on You, Waiting on Customer.",
+      "why": "Отвечает на самый важный вопрос Ionta: чей сейчас ход? Лучше статуса read/unread для прослеживания процессов.",
+      "apply": "Turn-state, Today, отчёт о зависших договорённостях",
+      "focus": "center",
+      "note": "Официальный продуктовый скриншот; B2B support — иная аудитория, но релевантная механика ожиданий.",
       "origin": "official"
     }
   ],
