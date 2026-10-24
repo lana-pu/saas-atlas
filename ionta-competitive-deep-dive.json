@@ -1,12 +1,13 @@
 {
-  "title": "Ionta: Deep Competitive UX Research",
+  "title": "Ionta: 15 SaaS Competitor and Adjacency UX Deep Dives",
   "date": "2026-10-25",
   "methodology": {
     "scope": "Eight competitors/adjacencies selected for Ionta's freelancer client communication and work lifecycle goals.",
     "sources": "Official documentation/product descriptions + verified reviews and public user reports. Features separated from evidence of real adoption; 2026 V4 features are not generalized from older V3 reviews. This is desk research, not firsthand usability testing.",
     "sentiment": "User sentiment is qualitative, selected testimonials; ratings and incentives depend on platform and sampling. Do not infer relative product quality from sparse G2 samples (notably Moxie).",
     "confidence": "Feature workflow: high if linked to primary official documents; Review insights: directional, not representative quantitative evidence; design implications: hypotheses for validation.",
-    "ionta_scope": "People, Inbox, Today, Ask, Task Suggestion, Task, planned Work Clusters. Ask is client request record; Task Suggestion is AI proposed user action; Task is accepted executable work; Work Clusters planned to group revisions and statuses."
+    "ionta_scope": "People, Inbox, Today, Ask, Task Suggestion, Task, planned Work Clusters. Ask is client request record; Task Suggestion is AI proposed user action; Task is accepted executable work; Work Clusters planned to group revisions and statuses.",
+    "additional_sources": "Seven new products from user-supplied discovery sources. Every mention of user sentiment identifies whether it is an independent review, vendor testimonial, marketing claim or research gap. alfred_ reviews must not be confused with unrelated apps sharing the name Alfred."
   },
   "profiles": [
     {
@@ -873,6 +874,607 @@
         "https://help.sunsama.com/docs/usage-guides/timeboxing/",
         "https://help.sunsama.com/docs/getting-started/basics/importing-and-creating-tasks/",
         "https://www.capterra.com/p/145616/Sunsama/reviews/"
+      ]
+    },
+    {
+      "id": "alfred_",
+      "score": 5,
+      "position": "Прямой функциональный конкурент: извлечение обязательств и задач, ожидания, Daily Brief",
+      "audience": "Фрилансеры, консультанты, основатели и другие клиентские профессионалы",
+      "jobs": [
+        "Автоматически определить обещания и просьбы в письмах",
+        "Увидеть, кто должен ответить и какие задачи просрочены",
+        "Согласовать предложенную AI работу перед выполнением"
+      ],
+      "summary": "alfred_ — наиболее важное расширение шортлиста. Он распознаёт в email и просьбы клиента, и собственные обещания пользователя, сохраняет ссылку на источник, выводит задачи и ожидаемые ответы в Daily Brief. Важное противоречие: официальная справка говорит об auto-extraction, а отдельная страница кейса описывает исключительно Create task по нажатию. До практического теста нельзя утверждать, какой режим доступен по умолчанию и на каких планах.",
+      "features": [
+        {
+          "name": "AI extraction: asks и commitments",
+          "how": "Сканирует email на две категории: пользователь обещал сделать (I'll send by Tuesday) и клиент попросил сделать (Can you review by Friday?). Извлекает срок и создаёт или предлагает задачу, сохраняя ссылку на исходный thread.",
+          "flow": "Connect Gmail/Outlook → triage → распознать запрос → показать task → review/dismiss → открыть source email.",
+          "value": "Автоматически снимает необходимость помнить, что обещал клиенту.",
+          "caveat": "Страница Task extraction описывает автоматическую запись; отдельная страница Turn email into task утверждает one-click с предварительным подтверждением. Требует hands-on верификации.",
+          "source": "https://get-alfred.ai/docs/tasks/task-extraction"
+        },
+        {
+          "name": "Отдельные waiting-on-you и waiting-on-them",
+          "how": "Из email вычисляет сообщения, где требуется мой ответ, и threads, где я ожидаю реакцию собеседника; показывает в Brief и Inbox с разной срочностью.",
+          "flow": "Новый ответ или отсутствие ответа → classify responsibility → Daily Brief → открыть conversation / написать follow-up.",
+          "value": "Переносит ответственность из памяти в рабочую очередь, близко к Today и turn-state Ionta.",
+          "caveat": "Из публичной документации не ясно, работает ли состояние на уровне deliverable между WhatsApp и email; интеграция WhatsApp здесь не подтверждена.",
+          "source": "https://get-alfred.ai/docs/getting-started/overview"
+        },
+        {
+          "name": "Extraction controls и Not a task",
+          "how": "В Settings → Tasks → Extraction можно выключить автосбор, ограничить VIP/contact/domain или требовать явный дедлайн. В Daily Brief ложное срабатывание отклоняют командой Not a task, что служит сигналом персональной модели.",
+          "flow": "Настроить порог → получить предложения → dismiss false positive → система учитывает исправление.",
+          "value": "Понятная граница AI уверенности и контроль количества мусорных задач.",
+          "caveat": "Нет сведений, умеет ли система объединять повторные запросы в одну работу и хранить исправления scope.",
+          "source": "https://get-alfred.ai/docs/tasks/task-extraction"
+        },
+        {
+          "name": "Daily Brief, отслеживание задержанных обязательств",
+          "how": "Сводка дня объединяет письма, draft replies, календарь, задачи и просроченные обещания. Старые задачи отмечаются stale после 7 дней, overdue после 3 дней опоздания переводятся в critical.",
+          "flow": "Утро → Brief → задачи, сроки и ожидаемые ответы → перейти к источнику → выполнить/отложить.",
+          "value": "Делает Ionta Today центральной рабочей поверхностью, а не ещё одной task board.",
+          "caveat": "Пороги фиксированной срочности могут не подходить разным профессиям; конфликтует с текущими описаниями ручного/автоматического capture.",
+          "source": "https://get-alfred.ai/help"
+        },
+        {
+          "name": "Контекстный AI и расписанные routines",
+          "how": "AI предлагает ответы, ищет в нескольких почтовых ящиках, может выполнять заданные пользователем routines по расписанию или по incoming email; исходящая отправка draft требует проверки, кроме явно настроенных автоматизаций.",
+          "flow": "Calendar/Inbox → brief/ask assistant → предложенный draft → preview → approve; routine → trigger → configured task.",
+          "value": "Управление работой через понятное подтверждение перед внешним действием.",
+          "caveat": "Публичные независимые отзывы именно этого get-alfred.ai скудны; не смешивать с macOS Alfred и другими Alfred AI в G2.",
+          "source": "https://get-alfred.ai/docs/getting-started/overview"
+        }
+      ],
+      "likes": [
+        {
+          "theme": "Потенциальная ценность: выявление обещаний, которые легко забыть",
+          "what": "Подтверждено назначением функций, но независимых массовых пользовательских оценок этой конкретной версии не удалось подтвердить.",
+          "evidence": "Это пользовательская гипотеза, НЕ опубликованный отзыв; подтверждены только функции",
+          "url": "https://get-alfred.ai/docs/tasks/task-extraction"
+        },
+        {
+          "theme": "Потенциальная ценность: короткая утренняя очередь",
+          "what": "Сокращённый Brief вместо ручной сортировки сотен писем заявлен самим разработчиком. Не выдавать обещанные часы экономии за измеренный результат.",
+          "evidence": "Маркетинговая заявка производителя; не реальный review",
+          "url": "https://get-alfred.ai/blog/ai-assistant-for-freelancers"
+        }
+      ],
+      "dislikes": [
+        {
+          "theme": "Слабая независимая review база",
+          "what": "Обзор eesel AI отмечает пока небольшой публичный review footprint; не удалось достоверно определить удовлетворённость массовых пользователей.",
+          "evidence": "Конкурентный обзор eesel AI; не пользовательский отзыв",
+          "url": "https://www.eesel.ai/blog/alfred-ai-review"
+        },
+        {
+          "theme": "Неясный режим автосоздания задачи",
+          "what": "Два официальных руководства не совпадают по ключевому поведению — фоновое извлечение или один клик с подтверждением. Требуется практический тест.",
+          "evidence": "Сравнение двух страниц самого продукта, а не пользовательская жалоба",
+          "url": "https://get-alfred.ai/use-cases/turn-emails-into-tasks"
+        }
+      ],
+      "takeaways": [
+        "Пересмотреть тезис об уникальности Ionta Ask/Task Suggestion — даже разделение asks vs commitments уже реализовано/заявлено у alfred_.",
+        "Различать источник входящего запроса и добровольно принятое обязательство; показывать AI confidence и reject.",
+        "Добавить контроль границы автообработки: VIP, known clients, explicit deadline, ручная проверка.",
+        "Проверить, сможет ли Work Cluster удержать правки после завершения, чего alfred_ пока не подтверждает."
+      ],
+      "ux_tests": [
+        "Клиент внёс пять просьб и одну отмену: AI создаст только актуальные обязательства?",
+        "Пользователь ответил «Сделаю завтра», затем изменил обещание: будет новая задача или обновлённая?",
+        "Сравнить включённое auto-extraction с Create task by click: что реально происходит?"
+      ],
+      "sources": [
+        "https://get-alfred.ai/docs/tasks/task-extraction",
+        "https://get-alfred.ai/use-cases/turn-emails-into-tasks",
+        "https://get-alfred.ai/docs/getting-started/overview",
+        "https://get-alfred.ai/help",
+        "https://www.eesel.ai/blog/alfred-ai-review"
+      ]
+    },
+    {
+      "id": "fyxer",
+      "score": 4,
+      "position": "Сильный AI-inbox конкурент за повседневное внимание, а не client work lifecycle",
+      "audience": "Владельцы бизнесов, консультанты и другие пользователи с большим количеством email/встреч",
+      "jobs": [
+        "Автоматически сортировать письма",
+        "Подготавливать ответы и follow-ups",
+        "Искать ранее обещанное через почту и встречи"
+      ],
+      "summary": "Fyxer встроен в Gmail/Outlook, сортирует письма, готовит черновики, собирает meeting notes и follow-ups. Для Ionta особенно значима граница доверия: автоматическая категоризация экономит время, но пользователи жалуются на сложность поиска отфильтрованных писем и агрессивный onboarding. Упомянутый в подборке Carly обзор использует отличающуюся и, по-видимому, неактуальную тарифную сетку; официальные цены имеют приоритет.",
+      "features": [
+        {
+          "name": "Автоматическая email-категоризация и drafts",
+          "how": "После OAuth Fyxer классифицирует новые письма в Gmail/Outlook по To do/To respond, FYI, Marketing и т.п., предлагает черновики в стиле пользователя. Категоризация может затронуть последние 300 писем при настройке.",
+          "flow": "Settings → Integrations → connect Gmail/Outlook → turn on categories → письма раскладываются по папкам/меткам → review draft → send yourself.",
+          "value": "Быстрый inbox triage без переноса писем в отдельную программу.",
+          "caveat": "Сортировка влияет на видимость сообщений. При ошибочном распределении пользователь может потерять уверенность, что нужное письмо вообще найдётся.",
+          "source": "https://support.fyxer.com/article/set-up-fyxer-in-2-minutes"
+        },
+        {
+          "name": "Awaiting Reply / To Follow Up",
+          "how": "Если на исходящее письмо нет ответа в течение заданного количества дней, Fyxer помечает thread Waiting/To follow up и создаёт follow-up draft. Пока срок не наступил, письмо остаётся в Sent.",
+          "flow": "Send email → выбрать number of days → нет ответа → Awaiting reply label → просмотреть AI follow-up draft.",
+          "value": "Отслеживает незавершённые разговоры и «ждём от клиента».",
+          "caveat": "Контролирует reply-status в email; не подтверждено понимание того, что клиент должен прислать конкретный файл или согласовать deliverable.",
+          "source": "https://support.fyxer.com/article/track-email-follow-ups"
+        },
+        {
+          "name": "Fyxer Chat по почте, встречам и файлам",
+          "how": "Пользователь может спросить, что обещал клиенту, какие решения приняты и что нужно сделать сегодня. Chat ищет в email, transcripts, calendar и загруженных документах.",
+          "flow": "Открыть dashboard Chat → задать вопрос → ответ с релевантным контекстом → перейти к task/email.",
+          "value": "Снижает стоимость восстановления контекста после паузы.",
+          "caveat": "В документации подтверждён поиск и ответы, но не строгая модель персистентных изменяющихся клиентских обязательств.",
+          "source": "https://support.fyxer.com/article/using-fyxer-chat-for-search-answers-and-drafting"
+        },
+        {
+          "name": "Flows: triggers, actions, delivery",
+          "how": "Создаёт регулярные/событийные автоматизации: morning briefing, end-of-day summary, commitments-first meeting recap и CRM-less deal tracker. Доставка через email, Slack, Teams или in-app.",
+          "flow": "Flows → choose schedule/event → choose action prompt → choose delivery channel → run.",
+          "value": "Облегчает повторяющийся контроль входящих.",
+          "caveat": "Fyxer прямо предупреждает о постепенном развёртывании Flows: доступность зависит от аккаунта и момента.",
+          "source": "https://support.fyxer.com/article/set-up-fyxer-flows"
+        }
+      ],
+      "likes": [
+        {
+          "theme": "Экономия времени на triage",
+          "what": "В G2 клиент сообщает о существенной экономии времени за счёт сортировки и готовых черновиков; похожие сообщения видны и на Trustpilot.",
+          "evidence": "G2, июнь 2026; небольшая платформа-выборка",
+          "url": "https://www.g2.com/sellers/fyxer"
+        },
+        {
+          "theme": "Сводки встреч и отсутствие ручного конспектирования",
+          "what": "Пользователи с email-heavy работой часто хвалят meeting note taker и черновики follow-up.",
+          "evidence": "Trustpilot, отзывы 2026; отзывы были частично приглашены производителем",
+          "url": "https://www.trustpilot.com/review/fyxer.com"
+        }
+      ],
+      "dislikes": [
+        {
+          "theme": "Письма кажутся пропавшими",
+          "what": "Несколько рецензентов описывают ситуацию, когда AI переместил важные сообщения в неожиданные категории и поиск не помог.",
+          "evidence": "Trustpilot, август–сентябрь 2026, субъективный опыт отдельных клиентов",
+          "url": "https://www.trustpilot.com/review/fyxer.com"
+        },
+        {
+          "theme": "Беспокойство о приватности и согласиях",
+          "what": "Отдельный пользователь сообщает об автоматическом добавлении notetaker на совещания и проблемах с подключением календаря.",
+          "evidence": "Trustpilot Германия, июнь 2026; единичный review",
+          "url": "https://de.trustpilot.com/review/fyxer.com"
+        },
+        {
+          "theme": "Стоимость и управление подпиской",
+          "what": "В рецензиях встречаются жалобы на платную подписку, процесс отмены и недостаточно управляемое поведение AI.",
+          "evidence": "Trustpilot и G2; не факт системной ошибки",
+          "url": "https://www.g2.com/products/fyxer/pricing"
+        }
+      ],
+      "takeaways": [
+        "AI не должен «прятать» клиентские сообщения: видимый action log, лёгкий Undo и пояснение любого перемещения.",
+        "«Ждём ответа» ≠ «ждём конкретного результата»; Ionta стоит моделировать ожидание на уровне client ask.",
+        "AI briefing полезен, когда можно уйти к исходному контексту и закрыть loop.",
+        "Настройки интеграций и разрешений должны быть явно объяснены в onboarding."
+      ],
+      "ux_tests": [
+        "Найти письмо, ошибочно классифицированное как маркетинг, за 10 секунд.",
+        "Показать все unanswered client commitments, не смешивая их с просто непрочитанными письмами.",
+        "Отключить AI, отменить последнее действие, восстановить настройки."
+      ],
+      "sources": [
+        "https://www.fyxer.com/pricing",
+        "https://support.fyxer.com/article/track-email-follow-ups",
+        "https://support.fyxer.com/article/set-up-fyxer-flows",
+        "https://www.trustpilot.com/review/fyxer.com",
+        "https://www.usecarly.com/blog/fyxer-ai-pricing/"
+      ]
+    },
+    {
+      "id": "canary",
+      "score": 4,
+      "position": "Смежный AI email клиент с точным позиционированием для нескольких клиентов",
+      "audience": "Фрилансеры, консультанты, клиентские менеджеры с несколькими email-аккаунтами",
+      "jobs": [
+        "Собрать почтовые аккаунты в одном месте",
+        "Быстро найти и понять сложную переписку",
+        "Не забыть ответить и защитить приватность"
+      ],
+      "summary": "Canary Mail предлагает multi-account inbox, AI triage, summaries, smart search, Follow-up и заметные privacy функции. Маркетинговая страница адресует ровно тех же фрилансеров, что Ionta; однако формулировки про автоматическое отслеживание approvals, revisions и invoices нельзя считать подтверждёнными полноценными бизнес-сущностями.",
+      "features": [
+        {
+          "name": "Unified Inbox для рабочих и личных email",
+          "how": "Поддерживает Gmail, Outlook, iCloud и другие совместимые email-аккаунты; позволяет фильтровать по домену/контакту, искать письма и аттачменты across accounts.",
+          "flow": "Connect accounts → Inbox → filter/search sender/project → open message.",
+          "value": "Снимает переключение между клиентскими адресами и приложениями.",
+          "caveat": "Единый Inbox не означает автоматического связывания переписок с несколькими deliverables клиента.",
+          "source": "https://canarymail.io/use-cases/email-app-for-freelancers-with-multiple-clients"
+        },
+        {
+          "name": "AI summary, drafts, Mark as Done",
+          "how": "AI сокращает длинные треды и предлагает ответ, пользователь выбирает tone и review. Inbox Zero даёт Mark as Done, убирая обработанное письмо из active attention.",
+          "flow": "Thread → summarize → check next step → draft reply → send → mark done.",
+          "value": "Снижение inbox overload; понятный лёгкий цикл завершения обработки.",
+          "caveat": "Mark as Done относится к email, не к реальному завершению работы по проекту.",
+          "source": "https://canarymail.io/features/inbox-zero"
+        },
+        {
+          "name": "Follow-up reminders и client/project tags",
+          "how": "Производитель описывает ручной follow-up на письме и правила через X дней без ответа; фриланс-страница упоминает теги и saved views по клиенту.",
+          "flow": "Tag client → specify follow-up interval → waiting → reminder → reply.",
+          "value": "Постоянная видимость разговоров, которые требуют реакции.",
+          "caveat": "Это утверждение из вертикальной marketing landing page; в проверенной технической документации не найдено подтверждения полноценному approval/revision/payment lifecycle.",
+          "source": "https://canarymail.io/use-cases/email-app-for-freelancers-with-multiple-clients"
+        },
+        {
+          "name": "Privacy-first email controls",
+          "how": "Tracker blocking, encryption-oriented mail features and optional AI. Продукт может использоваться как обычный почтовый клиент, не навязывая AI.",
+          "flow": "Manage inbox → enable security/AI controls as needed → view messages.",
+          "value": "Для клиентских файлов конфиденциальность и незаметный AI — отдельный драйвер выбора.",
+          "caveat": "Техническую реализацию каждого security claim нужно отдельно проверять; сам маркетинговый тезис не аудит.",
+          "source": "https://canarymail.io/features"
+        }
+      ],
+      "likes": [
+        {
+          "theme": "Чистый единый Inbox",
+          "what": "Пользователи G2 особенно хвалят объединение нескольких email-профилей и простую навигацию.",
+          "evidence": "G2 53 отзыва на продукт, опубликованные до осени 2026",
+          "url": "https://www.g2.com/products/canary-mail/reviews"
+        },
+        {
+          "theme": "Сводки длинных писем и task list",
+          "what": "Автор рецензии от мая 2026 отмечает auto-created task list и AI summaries как основные удобства.",
+          "evidence": "G2, май 2026, incentivized приглашение; единичный кейс",
+          "url": "https://www.g2.com/products/canary-mail/reviews"
+        },
+        {
+          "theme": "Можно использовать без AI",
+          "what": "Рецензенты ценят, что базовые email возможности и privacy остаются полезны, даже если AI не нужен.",
+          "evidence": "G2, review о basic-first интерфейсе",
+          "url": "https://www.g2.com/products/canary-mail/reviews"
+        }
+      ],
+      "dislikes": [
+        {
+          "theme": "Стабильность между платформами",
+          "what": "На Trustpilot пользователи сообщают о проблемах Windows/iOS и синхронизации; компания утверждает, что с тех пор улучшила надёжность.",
+          "evidence": "Trustpilot, мало отзывов (~17) и часть проблем из 2024",
+          "url": "https://www.trustpilot.com/review/canarymail.io"
+        },
+        {
+          "theme": "Невидимые функции и сложность поиска в UI",
+          "what": "G2 пользователь упомянул, что о полезных возможностях узнавал из email-рассылки, потому что в интерфейсе их трудно найти.",
+          "evidence": "G2, индивидуальный отзыв 2023",
+          "url": "https://www.g2.com/products/canary-mail/reviews"
+        },
+        {
+          "theme": "Вложения и папки",
+          "what": "Есть жалобы на поиск attachments в длинных ветках и создание новых папок через настройки.",
+          "evidence": "G2, отдельные отзывы, не общий рейтинг",
+          "url": "https://www.g2.com/products/canary-mail/reviews"
+        }
+      ],
+      "takeaways": [
+        "Позиционирование Ionta «несколько клиентов, несколько каналов» востребовано даже у традиционного email-клиента.",
+        "Важно не смешивать email Done и Work Done; показывать процессные статусы отдельно.",
+        "Core продукт должен работать без AI — AI как ассистент, а не обязательная навигация.",
+        "Поиск файла/решения среди правок должен быть простой первоочередной задачей."
+      ],
+      "ux_tests": [
+        "Сколько кликов надо, чтобы найти последний согласованный файл по конкретному клиенту?",
+        "Когда письмо marked done, но клиент ждёт deliverable — где появляется обязательство?",
+        "В условиях плохой синхронизации Gmail возможно ли понять source of truth?"
+      ],
+      "sources": [
+        "https://canarymail.io/use-cases/email-app-for-freelancers-with-multiple-clients",
+        "https://canarymail.io/features/inbox-zero",
+        "https://www.g2.com/products/canary-mail/reviews",
+        "https://www.trustpilot.com/review/canarymail.io"
+      ]
+    },
+    {
+      "id": "hermify",
+      "score": 3,
+      "position": "Референс form factor: личный AI-агент в Telegram, а не client-work system",
+      "audience": "Самозанятые и операторы, которым нужен conversational assistant без отдельного UI",
+      "jobs": [
+        "Попросить AI о follow-up, напоминании или сводке голосом",
+        "Поддерживать контекст между сессиями",
+        "Запустить регулярную мелкую автоматизацию"
+      ],
+      "summary": "Hermify позиционирует hosted Hermes Agent внутри Telegram. Сильная сторона — пользовательский канал взаимодействия, персональная память и простые задачи; публичная страница не подтверждает автоматическое наблюдение переписок фрилансера в WhatsApp/Gmail с полноценным lifecycle Ask и Work. Публичной независимой базы пользовательских отзывов не найдено.",
+      "features": [
+        {
+          "name": "Мгновенное включение AI через Telegram",
+          "how": "Пользователь оплачивает план, привязывает Telegram и получает персонального AI-агента. Можно говорить голосом, отправлять задачи, получать Daily Brief.",
+          "flow": "Sign up → connect Telegram → текст/voice запрос → ответ и исполнение.",
+          "value": "Не нужно открывать ещё одну SaaS-панель, чтобы использовать помощника.",
+          "caveat": "Это интерфейс к собственному агенту; WhatsApp client inbox и связанная client timeline не подтверждены.",
+          "source": "https://www.hermify.io/en"
+        },
+        {
+          "name": "Постоянная память и skills",
+          "how": "Hermes Agent сохраняет информацию о клиентах, проектах и предпочтениях и использует навыки для регулярных действий.",
+          "flow": "Рассказать о проекте → позже спросить о контексте → запустить запланированный task.",
+          "value": "Снижает повторный ввод данных и создаёт ощущение continuity.",
+          "caveat": "Реальная полнота памяти и точность восстановления клиентских обязательств без аккаунта неизвестны.",
+          "source": "https://www.hermify.io/en/blog/ai-agent-for-freelancers"
+        },
+        {
+          "name": "Drafts, reminders, research, follow-ups",
+          "how": "Разработчик перечисляет поддерживаемые действия: составить follow-up, напомнить об инвойсе, конспектировать документы, готовить материалы.",
+          "flow": "Запрос в Telegram → подготовить/выполнить → получить отчёт.",
+          "value": "Делегирование вместо ручной работы в меню.",
+          "caveat": "Эта демонстрация use cases — заявления поставщика без независимого теста именно freelancing workflow.",
+          "source": "https://www.hermify.io/en"
+        }
+      ],
+      "likes": [
+        {
+          "theme": "Предполагаемое преимущество: отсутствие отдельного интерфейса",
+          "what": "Это гипотеза на основе Telegram-first модели, не опубликованный отзыв.",
+          "evidence": "Продуктовая гипотеза, primary marketing page",
+          "url": "https://www.hermify.io/en"
+        }
+      ],
+      "dislikes": [
+        {
+          "theme": "Недостаточно независимых отзывов",
+          "what": "В изученных источниках нет достаточных подтверждений удовлетворённости клиентов и стабильности исполняемых задач.",
+          "evidence": "Исследовательский пробел; не пользовательская жалоба",
+          "url": "https://www.hermify.io/en/blog/ai-agent-for-freelancers"
+        }
+      ],
+      "takeaways": [
+        "Спросить фрилансеров, где им удобнее взаимодействовать с AI: в отдельном SaaS или мессенджере.",
+        "Отделить AI chat interface от системной модели устойчивых клиентских объектов.",
+        "Голосовая фиксация обязательства могла бы быть входным каналом, но не core business state."
+      ],
+      "ux_tests": [
+        "Сможет ли пользователь поправить ошибочную память об обещании клиента?",
+        "Какие данные реально автоматически доступны агенту без ручного ввода?"
+      ],
+      "sources": [
+        "https://www.hermify.io/en",
+        "https://www.hermify.io/en/blog/ai-agent-for-freelancers"
+      ]
+    },
+    {
+      "id": "carly",
+      "score": 4,
+      "position": "Смежный AI-агент с более автономными действиями и многоаккаунтной интеграцией",
+      "audience": "Солопренёры, специалисты и малые команды с множеством рабочих аккаунтов",
+      "jobs": [
+        "Делегировать scheduling и follow-ups из переписки",
+        "Проводить автоматизации между Gmail, CRM и задачами",
+        "Запоминать деловой контекст между запросами"
+      ],
+      "summary": "Carly упомянут как автор сравнительной статьи про Fyxer, но является самостоятельным агентным конкурентом. Его официальный список возможностей включает постоянную память, multi-account Gmail/Outlook, CRM, scheduled tasks и действия через email/SMS/Slack; однако эти широкие заявления требуют проверки в пользовательском аккаунте.",
+      "features": [
+        {
+          "name": "Delegate by email CC or messaging",
+          "how": "Пользователь добавляет Carly в переписку или пишет ему отдельно; AI координирует запись на встречу, напоминает о действиях, участвует в scheduling.",
+          "flow": "Client email → CC assistant → поручить задачу → проверить контекст и результат.",
+          "value": "AI работает в существующем канале, без отдельного TODO экрана.",
+          "caveat": "Автономная отправка внешних сообщений несёт риск ошибочного действия; неизвестны точные границы approval для всех типов агентов.",
+          "source": "https://www.usecarly.com/"
+        },
+        {
+          "name": "Cross-system automation + AI-native CRM",
+          "how": "Официальная страница Personal описывает persistent memory, несколько Gmail/Outlook аккаунтов, app integrations, AI-native CRM и единую to-do систему across channels.",
+          "flow": "Connect accounts → create agent → configure permissions/workflows → trigger follow-up across tools.",
+          "value": "Вместо ручного копирования контекста между email, CRM и календарём.",
+          "caveat": "Широкая product claim, а не подтверждённая end-to-end модель revision tracking; pricing uses credits above monthly base.",
+          "source": "https://www.usecarly.com/pricing/"
+        },
+        {
+          "name": "Proactive follow-up and scheduling",
+          "how": "Агенту можно поручить сопровождать деловую коммуникацию, рассылать напоминания и договариваться о времени встречи на основе календаря.",
+          "flow": "Ask agent to follow up next week → scheduled task/trigger → AI contacts counterpart.",
+          "value": "Сокращает административный overhead, особенно при нескольких клиентах.",
+          "caveat": "Требуется consent и ясная политика того, когда AI имеет право писать клиентам.",
+          "source": "https://www.usecarly.com/blog/best-ai-assistants-for-email-and-calendar/"
+        }
+      ],
+      "likes": [
+        {
+          "theme": "Продуктовые testimonials о multi-account и scheduling",
+          "what": "На официальном сайте есть истории пользователей о нескольких Microsoft 365 аккаунтах и экономии времени на бухгалтерии.",
+          "evidence": "Тестимониалы на сайте производителя, не независимая выборка",
+          "url": "https://www.usecarly.com/"
+        }
+      ],
+      "dislikes": [
+        {
+          "theme": "Недостаточно подтверждённого публичного отрицательного UX-feedback",
+          "what": "В доступных проверенных источниках не удалось собрать сопоставимый корпус клиентских жалоб.",
+          "evidence": "Пробел независимого исследования — не показатель качества",
+          "url": "https://www.usecarly.com/"
+        }
+      ],
+      "takeaways": [
+        "Следить за переходом от AI «советует» к AI «делает» — нужна отдельная система granular permission.",
+        "В Ionta approval на отправку клиенту должен быть явным по умолчанию.",
+        "У агента полезна персональная память, но стабильный client work state не должен жить только в свободном тексте."
+      ],
+      "ux_tests": [
+        "Проверить, может ли AI без подтверждения отправить клиенту обещание о дедлайне.",
+        "В нескольких аккаунтах как AI объединяет контакты без смешивания двух клиентов?"
+      ],
+      "sources": [
+        "https://www.usecarly.com/",
+        "https://www.usecarly.com/pricing/",
+        "https://www.usecarly.com/blog/fyxer-ai-pricing/"
+      ]
+    },
+    {
+      "id": "agiled",
+      "score": 3,
+      "position": "Фриланс-бизнес OS / широта CRM, work, finance и client portal",
+      "audience": "Небольшие агентства, солопренёры, организации с CRM и финансовыми процессами",
+      "jobs": [
+        "Вести клиента от обращения до проекта и счёта",
+        "Настраивать CRM и портал",
+        "Держать задачи и финансовые записи рядом"
+      ],
+      "summary": "Agiled — конкурент Moxie по all-in-one модели, не прямой конкурент по AI-inferred client obligations. Материал Agiled о Moxie является конкурентной рекламой и используется только для discovery, не объективной оценки Moxie.",
+      "features": [
+        {
+          "name": "CRM record с activity timeline",
+          "how": "Контакты, accounts, deals и pipelines; contact record показывает связанную активность и контекст взаимодействий.",
+          "flow": "Lead form → contact record → timeline → deal/project.",
+          "value": "Вся работа группируется вокруг клиента.",
+          "caveat": "Не установлено, что AI извлекает клиентские просьбы и автоматически обновляет их статус между каналами.",
+          "source": "https://agiled.app/features"
+        },
+        {
+          "name": "Client portal и tickets",
+          "how": "Позволяет клиенту просматривать проекты, оплачивать счета и создавать support tickets в брендированном портале.",
+          "flow": "Create client/project → portal → client submits ticket → owner handles → status update.",
+          "value": "Клиент вовлечён в отдельный процесс без переписок в почте.",
+          "caveat": "Для фрилансера отдельный клиентский портал может быть лишним friction; зависит от зрелости заказчика.",
+          "source": "https://agiled.app/features"
+        },
+        {
+          "name": "Invoices + projects + proposals",
+          "how": "Управляет задачами, предложениями, договорами и инвойсами из единой базы.",
+          "flow": "Proposal → acceptance → work → invoice.",
+          "value": "Экономит переходы между инструментами и двойной ввод.",
+          "caveat": "Большая модульность увеличивает learning curve; аналогичные претензии встречаются в старых review.",
+          "source": "https://agiled.app/features"
+        }
+      ],
+      "likes": [
+        {
+          "theme": "All-in-one и модульное включение функций",
+          "what": "В G2 пользователь 2026 отмечает, что можно отключать ненужные части и вести CRM + финансы в одном месте.",
+          "evidence": "G2, апрель 2026; отдельный review",
+          "url": "https://www.g2.com/products/agiled/reviews"
+        },
+        {
+          "theme": "Брендирование и client portal",
+          "what": "Ценят настройку внешнего вида и возможность единым приложением заменить CRM и billing.",
+          "evidence": "G2, пользователи малого бизнеса",
+          "url": "https://www.g2.com/products/agiled/reviews"
+        }
+      ],
+      "dislikes": [
+        {
+          "theme": "Проблемные интеграции",
+          "what": "В отзыве марта 2026 есть трудности настройки интеграций, хотя поддержка помогла.",
+          "evidence": "G2, март 2026",
+          "url": "https://www.g2.com/products/agiled/reviews"
+        },
+        {
+          "theme": "Clunky UI и разрастание модулей",
+          "what": "Старый отзыв указывает на поверхностную реализацию множества возможностей; относить к версии 2026 напрямую нельзя.",
+          "evidence": "G2, май 2022 — исторический отзыв",
+          "url": "https://www.g2.com/products/agiled/reviews"
+        }
+      ],
+      "takeaways": [
+        "Нельзя превращать Ionta в suite по всем бизнес-процессам, пока core pain — сохранить договорённости и ревизии.",
+        "Person-first не требует портала клиента — это другой тип продукта.",
+        "Скрываемая модульность — полезное решение от menu overload."
+      ],
+      "ux_tests": [
+        "Сколько разделов нужно открыть, чтобы ответить, кто ждёт действия по одному заказу?",
+        "Можно ли выключить unused CRM/finance modules без слома общей логики?"
+      ],
+      "sources": [
+        "https://agiled.app/features",
+        "https://agiled.app/alternatives/moxie",
+        "https://www.g2.com/products/agiled/reviews"
+      ]
+    },
+    {
+      "id": "plutio",
+      "score": 3,
+      "position": "Фриланс-бизнес платформа с proposal-to-project и клиентскими порталами",
+      "audience": "Фрилансеры, малые бизнесы, небольшие агентства",
+      "jobs": [
+        "От предложения перейти к проекту и выставлению счета",
+        "Сотрудничать с клиентом над задачами",
+        "Настроить единое рабочее пространство"
+      ],
+      "summary": "Plutio близок к Moxie по объединению клиента, work, proposals, invoices и client portals. В отзывах особенно ценят весь путь в одной системе; жалуются на надёжность, логичность навигации и слабые связи задач. Эти жалобы важны для Ionta Work Clusters, но большая часть относится к прежним версиям.",
+      "features": [
+        {
+          "name": "Client-centred business workspace",
+          "how": "CRM связывает contacts с proposals, contracts, projects, invoices и файлами в одном контексте.",
+          "flow": "Client → proposal → project → tasks → invoice.",
+          "value": "Можно проследить бизнес-историю клиента без ручного сведения нескольких систем.",
+          "caveat": "Нет подтверждения автоматического извлечения просьбы из сообщения и версионирования scope.",
+          "source": "https://www.plutio.com/freelancer-magazine/best-crm-software-for-freelancers"
+        },
+        {
+          "name": "Client portal и совместные request tasks",
+          "how": "Клиент может заходить в брендированный портал, видеть состояние работ и взаимодействовать с задачами/обращениями.",
+          "flow": "Project → client portal → request/feedback → task updates.",
+          "value": "Структурирует обратную связь и запросы вместо хаотичной переписки.",
+          "caveat": "Нужно проверить, насколько связаны client tasks и оригинальные сообщения; продукт не равен inbox-first Ionta.",
+          "source": "https://www.g2.com/products/plutio/reviews"
+        },
+        {
+          "name": "Шаблоны проектов и invoice pipeline",
+          "how": "Пользователь повторно применяет шаблоны task flows, привязывает deliverables к оплате и времени.",
+          "flow": "Reuse template → personalize work → track and bill.",
+          "value": "Ускоряет типовую клиентскую работу.",
+          "caveat": "Разветвлённый PM не значит хорошее управление версиями одного scope при частых изменениях.",
+          "source": "https://www.g2.com/products/plutio/reviews"
+        }
+      ],
+      "likes": [
+        {
+          "theme": "Всё от проекта до оплаты",
+          "what": "В G2 консультант 2025 хвалит связку проектов, сообщений, proposal, subscription и invoices.",
+          "evidence": "G2, август 2025",
+          "url": "https://www.g2.com/products/plutio/reviews"
+        },
+        {
+          "theme": "Брендирование и порталы",
+          "what": "В отдельных отзывах 2024 отмечена возможность настроить клиентскую workspace и внешний вид.",
+          "evidence": "G2, 2024 review",
+          "url": "https://www.g2.com/products/plutio/reviews"
+        }
+      ],
+      "dislikes": [
+        {
+          "theme": "Нелогичная навигация",
+          "what": "Пользователь, активно применяющий клиентский портал, критикует непонятные переходы и маршруты в интерфейсе.",
+          "evidence": "G2, май 2024",
+          "url": "https://www.g2.com/products/plutio/reviews"
+        },
+        {
+          "theme": "Не хватает зависимости между задачами",
+          "what": "Рецензент отметил, что нельзя связать задачи между собой так, как нужно для крупных проектов.",
+          "evidence": "G2, индивидуальный отзыв; точный релиз неясен",
+          "url": "https://www.g2.com/products/plutio/reviews"
+        },
+        {
+          "theme": "Разрыв доверия после обновлений",
+          "what": "В рецензиях 2023–2025 встречаются жалобы на релизы, нарушившие существующие процессы, и медленную поддержку.",
+          "evidence": "G2, исторические оценки и один отзыв 2025",
+          "url": "https://www.g2.com/products/plutio/reviews"
+        }
+      ],
+      "takeaways": [
+        "Ionta не нужно копировать proposals/invoicing; конкурентное преимущество — качество работы с evolving commitments.",
+        "UX Work Clusters должен моделировать реальную зависимость просьб, версий и результатов, а не только список карточек.",
+        "Стабильность и понятные отношения между сущностями важнее большой функциональной поверхности."
+      ],
+      "ux_tests": [
+        "Фрилансер пытается показать, что клиент обещал прислать материалы до начала работы.",
+        "Один deliverable проходит 4 revisions: можно ли восстановить актуальный scope?"
+      ],
+      "sources": [
+        "https://www.plutio.com/freelancer-magazine/best-crm-software-for-freelancers",
+        "https://www.g2.com/products/plutio/reviews"
       ]
     }
   ]
