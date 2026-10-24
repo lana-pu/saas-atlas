@@ -1,0 +1,1 @@
+SaaS Atlas is a UX reference website. Read /catalog.json for verified screenshot metadata, /AGENTS.md for agent instructions, /validation-report.json for provenance and excluded images.
