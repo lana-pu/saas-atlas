@@ -1,0 +1,879 @@
+{
+  "title": "Ionta: Deep Competitive UX Research",
+  "date": "2026-10-25",
+  "methodology": {
+    "scope": "Eight competitors/adjacencies selected for Ionta's freelancer client communication and work lifecycle goals.",
+    "sources": "Official documentation/product descriptions + verified reviews and public user reports. Features separated from evidence of real adoption; 2026 V4 features are not generalized from older V3 reviews. This is desk research, not firsthand usability testing.",
+    "sentiment": "User sentiment is qualitative, selected testimonials; ratings and incentives depend on platform and sampling. Do not infer relative product quality from sparse G2 samples (notably Moxie).",
+    "confidence": "Feature workflow: high if linked to primary official documents; Review insights: directional, not representative quantitative evidence; design implications: hypotheses for validation.",
+    "ionta_scope": "People, Inbox, Today, Ask, Task Suggestion, Task, planned Work Clusters. Ask is client request record; Task Suggestion is AI proposed user action; Task is accepted executable work; Work Clusters planned to group revisions and statuses."
+  },
+  "profiles": [
+    {
+      "id": "moxie",
+      "score": 5,
+      "position": "Самый близкий конкурент по аудитории и сквозному процессу фрилансера",
+      "audience": "Фрилансеры, солопренёры, небольшие агентства",
+      "jobs": [
+        "Провести клиента от обращения до оплаты",
+        "Не потерять связку клиент → запрос → проект → деньги",
+        "Обслуживать текущие обращения и правки"
+      ],
+      "summary": "Moxie V4 — не просто CRM: это операционная система фриланс-бизнеса. Наиболее опасен для Ionta именно широтой сквозного процесса. Функции подтверждены документами V4, опубликованными в 2026; часть отзывов относится к V3, что помечено отдельно.",
+      "features": [
+        {
+          "name": "Inbox, который фильтрует по известным клиентам",
+          "how": "В Inbox → Messages попадают email-переписки, текстовые сообщения и звонки известных Moxie контактов/opportunities. Можно переключить канал, найти разговор и изменить Inbox/Snoozed/Archived. Email неизвестных контактов Moxie намеренно не импортирует; при добавлении контакта позже старые письма пока не подгружаются.",
+          "flow": "Создать контакт → подключить почту → открыть Inbox → выбрать канал и клиента → открыть разговор → Snooze/Archive или создать работу.",
+          "value": "Меньше мусора личного email; рабочий Inbox связан с клиентской базой.",
+          "caveat": "Критичное ограничение полноты истории: новые клиенты не получают прошлые письма. WhatsApp как канал здесь документально не подтверждён.",
+          "source": "https://help.withmoxie.com/en/articles/16181668-understand-inbox-communications"
+        },
+        {
+          "name": "Создание работы из источника",
+          "how": "В заголовке выбранного email, SMS-диалога или звонка находится Create from… Пользователь выбирает Project, Task, Ticket или Opportunity. У проекта вводятся сроки/финансы; Task создаётся немедленно и открывается в редакторе; Ticket готовит запрос и отдельно предлагает отправить email; Opportunity идёт в pipeline.",
+          "flow": "Открыть сообщение → Create from → выбрать тип → проверить клиента и поля → сохранить → вернуться к источнику по ссылке.",
+          "value": "Сохраняется происхождение обязательства: можно доказать, откуда возникла задача, и не копировать контекст вручную.",
+          "caveat": "Выбор типа сущности — решение пользователя. Это не доказательство автоматического объединения повторных правок в одну работу. При нажатии Task запись уже создана до подтверждения.",
+          "source": "https://help.withmoxie.com/en/articles/16740165-create-work-from-an-inbox-conversation"
+        },
+        {
+          "name": "Клиентская workspace вместо набора вкладок",
+          "how": "V4 показывает контакты, заметки, историю, проекты, счета, договоры и файлы как связанные записи с числами/суммами; переход сохраняет клиентский контекст. Клиента можно закрепить звездой во вторичной навигации.",
+          "flow": "Clients → клиент → Recent activity → связанный проект/задача/счёт → вернуться в карточку.",
+          "value": "Клиент является центром операционной модели, а не просто строкой CRM.",
+          "caveat": "Глубокая структура всё же раздроблена на Clients/Work/Money/Sales/Inbox, и требует освоения.",
+          "source": "https://help.withmoxie.com/en/articles/16240983-moving-from-moxie-v3-to-moxie-v4"
+        },
+        {
+          "name": "Projects, Tasks, Workday и Portfolio",
+          "how": "Проект объединяет клиента, сроки, цены, задачи, время и портал. Task поддерживает статус, ответственных, даты, приоритет, вложения, подзадачи, комментарии и учёт времени. Workday отвечает за приоритеты дня, Portfolio — за состояние портфеля.",
+          "flow": "Create Project или шаблон → наполнить задачами → отслеживать Today/Workday → регистрировать время → связать с оплатой.",
+          "value": "Переход между разговором, выполнением и коммерческим результатом.",
+          "caveat": "Это PM/администрирование, не специфическая система отношений. По отзывам глубины планирования иногда не хватает.",
+          "source": "https://help.withmoxie.com/en/articles/16179940-understand-work-in-moxie"
+        },
+        {
+          "name": "AI-предложение проекта с review",
+          "how": "При создании проекта пользователь описывает заказ естественным языком; Moxie Assistant готовит структуру задач, затем открывает обычный редактор для проверки клиента, дат и стоимости; проект не создаётся окончательно без подтверждения.",
+          "flow": "Work → Projects → New → Build with Assistant → описать заказ → Review project plan → исправить → Create.",
+          "value": "Модель работает как черновик, а не как невидимый исполнитель.",
+          "caveat": "Проверка полезна, но требует сознательного старта. Нельзя считать это подтверждением автоматического разбора входящих.",
+          "source": "https://help.withmoxie.com/en/articles/16179941-create-and-configure-a-project"
+        },
+        {
+          "name": "Портал клиента, договоры и выставление счетов",
+          "how": "Портал показывает согласованный клиенту контент; проект связан с договорами, инвойсами, оплатой, шаблонами и файлами. V4 предлагает фирменные страницы и версионирование файлов.",
+          "flow": "Opportunity/Proposal → agreement → project → client portal → invoice/payment.",
+          "value": "Закрывает больше жизненного цикла заказа, чем Ionta сейчас планирует.",
+          "caveat": "Сильная широта повышает сложность навигации и может снижать качество отдельных глубинных модулей.",
+          "source": "https://help.withmoxie.com/en/articles/16240983-moving-from-moxie-v3-to-moxie-v4"
+        }
+      ],
+      "likes": [
+        {
+          "theme": "Все части бизнеса в одном месте",
+          "what": "Фрилансеры хвалят возможность вести клиента, договор, проект, время и инвойс без набора подписок. В отзыве соло-оператора это ключевая причина выбора.",
+          "evidence": "Trustpilot, 2026; G2, отзывы дизайнеров/консультантов",
+          "url": "https://www.trustpilot.com/review/withmoxie.com"
+        },
+        {
+          "theme": "Клиентский путь сохраняет связь",
+          "what": "В отзывах описывается экономия от однократного ввода проекта до выставления счёта и простой переход от этапа к этапу.",
+          "evidence": "App Store, отзыв фрилансера-дизайнера 2024",
+          "url": "https://apps.apple.com/us/app/moxie-built-for-freelancers/id1554217247?platform=iphone&see-all=reviews"
+        },
+        {
+          "theme": "Цена и персональная поддержка",
+          "what": "Низкий барьер для соло-бизнеса, поддержка и быстрые изменения продукта встречаются в положительных отзывах.",
+          "evidence": "Trustpilot 539 отзывов на момент проверки, G2 4 отзыва; выборки отличаются",
+          "url": "https://www.g2.com/products/geoff-mina-moxie/reviews"
+        }
+      ],
+      "dislikes": [
+        {
+          "theme": "Автоматизация ограничена pipeline",
+          "what": "Пользователь жалуется, что автомации работают прежде всего с pipeline, а не с клиентами/проектами — как раз там, где хочется логики выполнения.",
+          "evidence": "Trustpilot, март 2026",
+          "url": "https://www.trustpilot.com/review/withmoxie.com"
+        },
+        {
+          "theme": "Управление проектами не очень глубокое",
+          "what": "Недовольство отсутствием длительности/зависимостей задач. Компания в публичном ответе подтверждала ограничения на тот момент.",
+          "evidence": "Trustpilot, июнь 2026; осторожно: новые возможности могут измениться",
+          "url": "https://www.trustpilot.com/review/withmoxie.com"
+        },
+        {
+          "theme": "Переизбыток функций и clunky UX",
+          "what": "В G2 пользователь назвал PM clunky, интерфейс менее современным и навигацию тяжёлой; часть отзывов до V4.",
+          "evidence": "G2, май 2025 — именно о прежней версии",
+          "url": "https://www.g2.com/products/geoff-mina-moxie/reviews"
+        }
+      ],
+      "takeaways": [
+        "Проверить, как Ionta узнаёт клиента, которого ещё нет в системе, и извлекает исторический контекст.",
+        "Не вынуждать выбирать Project/Task/Ticket для одной просьбы; предложить сначала единый work object, а потом детализацию.",
+        "Каждый Ask/Work Cluster обязан сохранять ссылку на сообщения-источники и версию договорённостей.",
+        "Не соревноваться с Moxie по счетам и бухгалтерии, пока core JTBD — управление обещаниями и правками."
+      ],
+      "ux_tests": [
+        "Клиент внезапно написал с нового номера: что произойдёт со старой перепиской?",
+        "В одном email четыре исправления и одна просьба о счёте: сколько сущностей будет создано?",
+        "Исправление пришло после отправки финального файла: как увидеть reopened работу?"
+      ],
+      "sources": [
+        "https://help.withmoxie.com/en/articles/16181668-understand-inbox-communications",
+        "https://help.withmoxie.com/en/articles/16740165-create-work-from-an-inbox-conversation",
+        "https://help.withmoxie.com/en/articles/16240983-moving-from-moxie-v3-to-moxie-v4",
+        "https://www.trustpilot.com/review/withmoxie.com",
+        "https://www.g2.com/products/geoff-mina-moxie/reviews"
+      ]
+    },
+    {
+      "id": "folk",
+      "score": 5,
+      "position": "Самое близкое продуктовое мышление: отношения прежде канала и pipeline",
+      "audience": "Основатели, небольшие команды, агентства, консультанты и менеджеры отношений",
+      "jobs": [
+        "Восстановить весь контакт с конкретным человеком",
+        "Быстро понять, когда и о чём общались",
+        "Провести клиента по статусам без тяжёлого CRM"
+      ],
+      "summary": "folk уже предоставляет важную часть заявленного client-first сценария Ionta: автоматический activity log email + WhatsApp + calendar, плюс AI recap. В отличие от Ionta, его сильнейшая модель — контакт и продажа, а не версия клиентского обязательства.",
+      "features": [
+        {
+          "name": "Interactions в профиле контакта",
+          "how": "После подключения Google/Microsoft и WhatsApp индивидуальные 1:1 разговоры подтягиваются к соответствующему person record. Письма и события появляются в реальном времени. Interaction можно открыть в folk или перейти в оригинал Gmail/WhatsApp.",
+          "flow": "Integrations → подключить почту/WhatsApp → People → выбрать контакт → Interactions → прочитать/открыть источник.",
+          "value": "Контекст клиента независимо от канала, знакомый UX карточки контакта.",
+          "caveat": "WhatsApp поддерживает только 1:1, Standard показывает не более 30 взаимодействий на контакт в пределах 3 лет, Premium — полную историю. Есть видимость только темы или полный доступ при шаринге.",
+          "source": "https://help.folk.app/en/articles/5007315-track-interactions-emails-calendar-events-whatsapp-conversations"
+        },
+        {
+          "name": "AI Recap Assistant",
+          "how": "В карточке контакта, компании или сделки нажать Generate recap. Система сканирует последние письма, встречи, заметки, WhatsApp, LinkedIn и возвращает структурированную сводку о том, кто общался, что решено и какие next steps. Шаблон/инструкции можно менять на уровне workspace.",
+          "flow": "Profile → Recap → Generate → прочитать → вручную Refresh после нового сообщения.",
+          "value": "Быстрый возврат в контекст перед разговором или после длительной паузы.",
+          "caveat": "Это on-demand, не непрерывно обновляемый статус. Результат нельзя вручную отредактировать: надо исправить источник и перегенерировать. Вывод оптимизирован под английский.",
+          "source": "https://help.folk.app/en/articles/12893225-recap-assistant"
+        },
+        {
+          "name": "Пайплайн и группировка людей/компаний",
+          "how": "Контакты группируются в отдельные workspace views и списки; статусы сделок и поля работают поверх основного person/company record.",
+          "flow": "Создать/импортировать contact → классифицировать → двигать по стадиям → открыть Activity для контекста.",
+          "value": "Лёгкость CRM без дробления контактной базы по каналам.",
+          "caveat": "Продвинутая аналитика продаж и сложные автомации по отзывам уступают тяжёлым CRM.",
+          "source": "https://www.folk.app/crm-for-x/gmail"
+        },
+        {
+          "name": "Privacy и история взаимодействий",
+          "how": "Email/WhatsApp могут оставаться приватными или расшариваться команде как тема либо как полный текст; доступность персональной сводки зависит от разрешений пользователя.",
+          "flow": "Подключить интеграции → определить уровень видимости → просматривать Activity/Recap.",
+          "value": "Контроль границы личных и рабочих сообщений.",
+          "caveat": "Даже хорошая синхронизация контакта не означает автоматического понимания договорённостей; приватные источники исключаются из чужих recap.",
+          "source": "https://help.folk.app/en/articles/5007315-track-interactions-emails-calendar-events-whatsapp-conversations"
+        }
+      ],
+      "likes": [
+        {
+          "theme": "Чистота и отсутствие CRM-перегруза",
+          "what": "Отзывы отмечают простую people-first систему, таблицеподобную организацию и лёгкое освоение в малой команде.",
+          "evidence": "G2 folk, отзывы октября и марта 2026",
+          "url": "https://www.g2.com/sellers/folk"
+        },
+        {
+          "theme": "Удобное восстановление отношений",
+          "what": "Хвалят контактные группы, историю взаимодействий, LinkedIn enrichment, Google Workspace и видимость follow-ups.",
+          "evidence": "G2, пользователь CRM из малого бизнеса, март 2026",
+          "url": "https://www.g2.com/products/folk-folk/pricing"
+        },
+        {
+          "theme": "Быстрый старт",
+          "what": "Меньше настройки, чем в тяжёлых корпоративных CRM; это мотив выбора для агентств и консультантов.",
+          "evidence": "Независимая оценка Hack'celeration по небольшой выборке; осторожно с экстраполяцией",
+          "url": "https://hackceleration.com/labs/review/folk-crm"
+        }
+      ],
+      "dislikes": [
+        {
+          "theme": "Пределы гибкости и аналитики",
+          "what": "В отзывах критикуют прогнозирование, отчётность, сложный pipeline и слабоватые автоматизации.",
+          "evidence": "G2, март 2026",
+          "url": "https://www.g2.com/products/folk-folk/pricing"
+        },
+        {
+          "theme": "Интеграции и поля",
+          "what": "Сообщают о недостаточно гибких полях/тегах, импортировании дубликатов и неполном наборе интеграций.",
+          "evidence": "Сводка публичных отзывов, малая выборка; нуждается в юзабилити-проверке",
+          "url": "https://hackceleration.com/labs/review/folk-crm"
+        },
+        {
+          "theme": "Нечёткая граница summary и действия",
+          "what": "Не отзыв, а подтверждённое функциональное ограничение: recap создаётся по запросу и не является редактируемой рабочей задачей.",
+          "evidence": "Официальная документация; не выдаём за жалобу клиента",
+          "url": "https://help.folk.app/en/articles/12893225-recap-assistant"
+        }
+      ],
+      "takeaways": [
+        "Client profile и автоматическая склейка почты/WhatsApp уже не являются уникальными преимуществами Ionta.",
+        "Дифференциация — подтверждённый «что мы договорились сделать» с процессным состоянием и историей изменений.",
+        "Recap и Task не должны дублировать друг друга; recap — про понимание, Work Cluster — про выполнение.",
+        "Проверить полноту WhatsApp: групповые диалоги, ограничения истории и границы доступа."
+      ],
+      "ux_tests": [
+        "После 20 сообщений в двух каналах найти последнюю актуальную договорённость за 20 секунд.",
+        "Исправить AI-сводку, которая перепутала дедлайны, не потеряв исходный текст.",
+        "Проверить, почему часть сообщений отсутствует в Activity (дубликат контакта, канал, тариф)."
+      ],
+      "sources": [
+        "https://help.folk.app/en/articles/5007315-track-interactions-emails-calendar-events-whatsapp-conversations",
+        "https://help.folk.app/en/articles/12893225-recap-assistant",
+        "https://www.g2.com/sellers/folk",
+        "https://www.g2.com/products/folk-folk/pricing"
+      ]
+    },
+    {
+      "id": "missive",
+      "score": 5,
+      "position": "Самый сильный ориентир для структуры conversation → work",
+      "audience": "Команды, агентства, сервисные бизнесы с многоканальной коммуникацией",
+      "jobs": [
+        "Обработать входящие в одном inbox",
+        "Распределить ответственность",
+        "Превратить сообщения в задачи с дедлайнами"
+      ],
+      "summary": "Missive очень близок по UX-механике, хотя рассчитан прежде всего на совместную работу. Различает conversation task, subtask и standalone task; all three visible in one Tasks view. Это особенно полезно для проверки чрезмерного числа сущностей в Ionta.",
+      "features": [
+        {
+          "name": "Unified conversations",
+          "how": "Email, SMS, WhatsApp, live chat и соцканалы ведутся в единой рабочей области. В conversation собраны внешние сообщения, внутренние comments/@mentions, drafts, labels и задачи; личные разговоры можно расшарить.",
+          "flow": "Подключить аккаунты → inbox → выбрать conversation → прочитать → ответить или связать действие.",
+          "value": "Одно рабочее место для входящих и контекста.",
+          "caveat": "Объединение каналов в один inbox не означает, что все разговоры одного человека автоматически объединяются в одну клиентскую историю.",
+          "source": "https://missiveapp.com/docs/core-features/conversations"
+        },
+        {
+          "name": "Три вида Task и единая очередь",
+          "how": "Conversation task = назначенная переписка как целая задача; Subtask = пункт внутри разговора; Standalone = отдельная работа. Все появляются в Tasks view, где можно менять To-Do, In Progress, Closed, сроки и исполнителей.",
+          "flow": "Inbox → назначить conversation или создать subtask → увидеть общий Tasks view → изменить status/due → Closed.",
+          "value": "Сокращает раздробление задач и позволяет видеть, откуда возникло действие.",
+          "caveat": "Несколько видов задач внутри одного списка всё ещё требуют понятных иконок и типов; клиентский Ask в Ionta может представлять иное семантическое обязательство.",
+          "source": "https://missiveapp.com/docs/core-features/tasks"
+        },
+        {
+          "name": "AI Rules — семантическое действие",
+          "how": "Настроить rule: фильтр отправителя/канала → Prompt condition → AI классифицирует намерение, дату, urgency → Add tasks with AI или AI note/labels/draft. Нужна подписка Productive/Business и внешний API ключ OpenAI/Anthropic/Gemini.",
+          "flow": "Settings Rules → выбрать триггер → настроить AI prompt → action → протестировать → включить.",
+          "value": "Извлечение задач без ручного поиска формулировок «пожалуйста», «сделайте».",
+          "caveat": "Стоимость/настройка/ошибки prompt. Не найдено свидетельств полноценного отслеживания изменений одной работы между разными разговорами.",
+          "source": "https://missiveapp.com/docs/advanced-features/rules/ai-rules"
+        },
+        {
+          "name": "Merge, snooze и авто-follow-up",
+          "how": "Объединяет связанные разговоры; snooze откладывает возвращение в Inbox; rules могут организовать автоматические напоминания и follow-ups.",
+          "flow": "Conversation → merge/snooze → reminder или trigger → очередь актуальных сообщений.",
+          "value": "Снижает шум и удерживает незакрытые коммуникации в рабочем поле.",
+          "caveat": "Snooze ≠ «клиент должен согласовать»; статусы сообщения и бизнес-обязательства семантически различны.",
+          "source": "https://missiveapp.com/features"
+        },
+        {
+          "name": "Контекстный AI Assistant",
+          "how": "Встроенный помощник ищет во всех подключённых аккаунтах, календарях и контактах, получает контекст активной переписки и готовит ответы/справку. Данные передаются выбранному AI-провайдеру согласно конфигурации.",
+          "flow": "Открыть разговор → задать вопрос → получить summary/действие → принять решение.",
+          "value": "Контекст из реальной переписки на месте выполнения действия.",
+          "caveat": "Управление API-ключами и правами доступа существенно для маленькой команды.",
+          "source": "https://missiveapp.com/docs/ai/overview"
+        }
+      ],
+      "likes": [
+        {
+          "theme": "Командная совместная работа",
+          "what": "Любят назначение разговоров, внутренние комментарии в контексте писем и отсутствие двойных ответов.",
+          "evidence": "Capterra, 184 отзыва и G2; чаще командные пользователи",
+          "url": "https://www.capterra.com/p/152884/Missive/reviews/"
+        },
+        {
+          "theme": "Много функций прямо в email UX",
+          "what": "Общая почта, ярлыки, быстрые действия и автоправила делают Inbox рабочей поверхностью, а не только средством связи.",
+          "evidence": "G2 обзор достоинств, агрегированные пользовательские упоминания",
+          "url": "https://www.g2.com/products/missive/reviews?page=2&qs=pros-and-cons"
+        },
+        {
+          "theme": "Комфорт после освоения",
+          "what": "Пользователи отмечают экономию времени и ясность ownership после периода привыкания.",
+          "evidence": "Capterra, апрель 2026",
+          "url": "https://www.capterra.com/p/152884/Missive/reviews/"
+        }
+      ],
+      "dislikes": [
+        {
+          "theme": "Поиск по старым сообщениям",
+          "what": "В агрегированных жалобах G2 часто встречаются трудности точного поиска и организации labels.",
+          "evidence": "G2 review topics",
+          "url": "https://www.g2.com/products/missive/reviews?page=2&qs=pros-and-cons"
+        },
+        {
+          "theme": "Высокий порог конфигурации",
+          "what": "Множество правил, общих/private разговоров и командных ролей сложно освоить новым пользователям.",
+          "evidence": "G2, Capterra",
+          "url": "https://www.capterra.com/p/152884/Missive/"
+        },
+        {
+          "theme": "Не всем подходит offline",
+          "what": "В агрегированных отзывах фигурирует запрос на offline и ограничения некоторых функций вне сети.",
+          "evidence": "G2 review topics",
+          "url": "https://www.g2.com/products/missive/reviews?page=2&qs=pros-and-cons"
+        }
+      ],
+      "takeaways": [
+        "Использовать понятный общий work list поверх разных origin типов вместо трёх конкурирующих страниц Ask/TaskSuggestion/Task.",
+        "Оставить status работы независимым от read/archived состояния разговора.",
+        "Проверить, можно ли объединить ревизию и исходную просьбу без merge самих разных коммуникаций.",
+        "Показывать AI-extracted work с привязкой к конкретному сообщению и возможностью подтверждения."
+      ],
+      "ux_tests": [
+        "В одном разговоре три просьбы; две относятся к одному deliverable, одна — к другому.",
+        "Из двух разговоров разных каналов AI извлёк одну и ту же задачу: как видно, что это duplicate?",
+        "Ответ клиента пришёл после завершения задачи: reopened или новая задача?"
+      ],
+      "sources": [
+        "https://missiveapp.com/docs/core-features/conversations",
+        "https://missiveapp.com/docs/core-features/tasks",
+        "https://missiveapp.com/docs/advanced-features/rules/ai-rules",
+        "https://www.capterra.com/p/152884/Missive/reviews/",
+        "https://www.g2.com/products/missive/reviews?page=2&qs=pros-and-cons"
+      ]
+    },
+    {
+      "id": "front",
+      "score": 4,
+      "position": "Ключевой UX-референс состояния входящих и customer context",
+      "audience": "B2B support, success, operations и командные inbox-процессы",
+      "jobs": [
+        "Не терять ответственность за клиентский разговор",
+        "Контролировать ожидания и время ответа",
+        "Передавать коммуникацию без потери истории"
+      ],
+      "summary": "Front наиболее полезен для turn-state и очередей, но важно различать обычный Inbox и ticketing mode. Статусы Open/Waiting/Resolved доступны именно в ticketing; это не универсальная настройка любого почтового inbox.",
+      "features": [
+        {
+          "name": "Unified Inbox и internal collaboration",
+          "how": "Сообщения из email, SMS, WhatsApp, чата и других разрешённых каналов в общем workspace. Разговор назначается сотруднику, в нём можно писать невидимые клиенту комментарии, вызывать коллегу и применять автоматические правила.",
+          "flow": "Shared inbox → conversation → назначить owner → внутренний комментарий/ответ → closed/archive.",
+          "value": "Клиент не получает противоречивых ответов; сохраняется ответственность.",
+          "caveat": "Это построено вокруг команды и shared inbox; для одиночного фрилансера часть фич неактуальна.",
+          "source": "https://www.g2.com/products/front/reviews"
+        },
+        {
+          "name": "Контекст клиента в боковой панели",
+          "how": "В Contact Details можно переключаться между person и account, редактировать поля, заметки и видеть список разговоров across channels, доступных сотруднику. Каждый conversation можно открыть отдельно.",
+          "flow": "Открыть inbox conversation → Contact Details → Conversations → выбрать прошлую переписку.",
+          "value": "Одно место для истории клиента без переноса сообщения в CRM.",
+          "caveat": "Это список отдельных разговоров, а не автоматически объединённый граф работы и договорённостей.",
+          "source": "https://help.front.com/en/articles/2226"
+        },
+        {
+          "name": "Status tabs и ticketing waiting",
+          "how": "По умолчанию shared inbox переключается Unassigned/Assigned/Snoozed/Archived либо Open/Snoozed/Archived. В ticketing mode появляются отдельные Open/Waiting/Resolved. Смена состояния переносит разговор между табами.",
+          "flow": "Включить ticketing statuses → выбрать разговор → Waiting → он переходит в Waiting tab → после ответа Resolved или Open.",
+          "value": "Кто-то может быстро найти всё, по чему ждём реакции.",
+          "caveat": "Waiting — статус разговора, не обязательно автоматически «ждём от клиента» vs «ждём от меня». Не переносить термины без адаптации к Ionta.",
+          "source": "https://help.front.com/en/articles/2159"
+        },
+        {
+          "name": "Activity history и audit trail",
+          "how": "Для разговора записываются assign/unassign, snooze, archive/reopen, смена статусов и полей, правила, merge/split, время и исполнитель. Строку активности можно раскрыть и выяснить причину.",
+          "flow": "Conversation → открыть activity history → раскрыть изменение/trigger → проверить автор/время.",
+          "value": "Чёткая история того, кто что поменял, особенно для бизнес-договорённостей.",
+          "caveat": "Это история изменений статуса/системных операций, а не версия коммерческого scope по умолчанию.",
+          "source": "https://help.front.com/en/articles/2414"
+        }
+      ],
+      "likes": [
+        {
+          "theme": "Прозрачность команды и ownership",
+          "what": "В обзорах особенно ценят shared inbox, @mentions, assignment и internal comments; снижаются дубли ответов.",
+          "evidence": "G2, 2500+ отзывов, 2026",
+          "url": "https://www.g2.com/products/front/reviews"
+        },
+        {
+          "theme": "Знакомый формат email",
+          "what": "Пользователи быстрее начинают работать, чем в полноценной ticketing системе; внутри письма можно работать совместно.",
+          "evidence": "G2, Capterra; review themes",
+          "url": "https://www.g2.com/products/front/reviews?page=3&qs=pros-and-cons"
+        },
+        {
+          "theme": "Контекст и связанная история",
+          "what": "Отмечают значительную экономию переключения между клиентскими системами и уменьшение handoff-потерь.",
+          "evidence": "TrustRadius reviews",
+          "url": "https://www.trustradius.com/products/front"
+        }
+      ],
+      "dislikes": [
+        {
+          "theme": "Поиск, threading и лишний шум",
+          "what": "Жалобы на сложность поиска отдельных старых сообщений, группировку новых сообщений в старые цепочки и организацию ярлыков.",
+          "evidence": "G2 и TrustRadius, повторяющиеся темы",
+          "url": "https://www.g2.com/products/front/reviews?page=3&qs=pros-and-cons"
+        },
+        {
+          "theme": "Стоимость для малого бизнеса",
+          "what": "Платформа дороги́м образом масштабируется по seats и более богатым планам; не всегда оправдана соло-бизнесом.",
+          "evidence": "G2 и независимые обзоры",
+          "url": "https://www.g2.com/products/front/reviews"
+        },
+        {
+          "theme": "Несоответствие статусов между Front и Outlook",
+          "what": "Отдельный негативный отзыв описывает одностороннее обновление прочитано/архив между Front и Outlook после миграции 2026; это один случай, но сильный сигнал риска state sync.",
+          "evidence": "Capterra, февраль 2026 — индивидуальный кейс",
+          "url": "https://www.capterra.com/p/132901/Front/reviews/"
+        }
+      ],
+      "takeaways": [
+        "Turn-state Ionta не должен совпадать с Inbox read/unread; Waiting on client нужно держать отдельно от Snoozed.",
+        "История изменений — audit log со ссылкой на сообщение, автора/AI и временную метку.",
+        "Не допустить многослойной настройки для обычного фрилансера; Front полезен как паттерн, но не как полнота UI.",
+        "Проверять consistency состояния между Gmail, WhatsApp и Ionta после действий."
+      ],
+      "ux_tests": [
+        "Фрилансер ответил клиенту и теперь ждёт макеты; где разговор и работа находятся?",
+        "Клиент изменил дедлайн, а AI по старому сообщению выдал новую задачу; как отследить override?",
+        "Синхронизация read/archive не совпала с Gmail; как система сообщает о конфликте?"
+      ],
+      "sources": [
+        "https://help.front.com/en/articles/2226",
+        "https://help.front.com/en/articles/2159",
+        "https://help.front.com/en/articles/2414",
+        "https://www.g2.com/products/front/reviews",
+        "https://www.capterra.com/p/132901/Front/reviews/"
+      ]
+    },
+    {
+      "id": "shortwave",
+      "score": 4,
+      "position": "Самый полезный AI-first UX-референс: поиск, объяснимость и подтверждение действий",
+      "audience": "Профессионалы с интенсивной Gmail-перепиской, соло-специалисты, небольшие команды",
+      "jobs": [
+        "Быстро разобрать переполненную почту",
+        "Найти в письмах контекст, сроки и действия",
+        "Преобразовать поток сообщений в выполнение"
+      ],
+      "summary": "Shortwave показывает сильный сценарий AI inside inbox. Его преимущество — интерактивный контекстный AI с гибкими запросами, а не CRM-карточка человека. Для Ionta релевантен сам принцип предложения подтверждаемого плана.",
+      "features": [
+        {
+          "name": "Контекстный AI Assistant",
+          "how": "AI открыт в правой панели или по Cmd+J. Понимает текущий экран, а также запросы типа «this email». Может суммировать длинную ветку, получить action items из нескольких писем, искать конкретную информацию, создавать черновики.",
+          "flow": "Открыть thread → AI sidebar → задать вопрос → получить ответы с найденными письмами → перейти в оригинал.",
+          "value": "Снимает нагрузку чтения переписки и восстановления источника.",
+          "caveat": "Глубина обработки зависит от качества извлечения; нельзя автоматически считать summary подтверждённой договорённостью.",
+          "source": "https://www.shortwave.com/docs/guides/ai-assistant/"
+        },
+        {
+          "name": "Organize my inbox и пакетное подтверждение",
+          "how": "Пользователь спрашивает AI организовать Inbox. Система предлагает группы действий: архивировать, удалить, назначить label, создать todo. Перед применением пользователь видит рекомендации и сохраняет контроль.",
+          "flow": "AI → Organize my inbox → проверить подборки и предложенные изменения → подтвердить выбранные действия.",
+          "value": "Меньше однотипных микродействий без делегирования вслепую.",
+          "caveat": "AI может ошибиться в важности или группе — нужны preview, undo и trace.",
+          "source": "https://www.shortwave.com/docs/guides/ai-assistant/"
+        },
+        {
+          "name": "Natural-language search и аналитика писем",
+          "how": "Запросы формулируются естественным языком; результаты связываются с исходными тредами и специальными поисковыми выражениями about:. AI умеет анализировать письма, например собрать недавние отзывы клиентов.",
+          "flow": "Спросить о клиенте → увидеть summary/обоснование → открыть релевантные threads.",
+          "value": "Можно не помнить точную формулировку сообщения.",
+          "caveat": "Без отдельной постоянной сущности work состояние не живёт само по себе между запросами.",
+          "source": "https://www.shortwave.com/docs/guides/ai-assistant/"
+        },
+        {
+          "name": "Emails as todos и контроль follow-ups",
+          "how": "Письма превращаются в actionable todo, могут оставаться в списке приоритетов. AI умеет найти клиентов, которым отправили письма, но которые ещё не ответили.",
+          "flow": "Входящее → отметить как todo / спросить AI о follow-up → вернуть в focus.",
+          "value": "Сочетание почты и личного планирования.",
+          "caveat": "Email-centric, нет подтверждённого объединения Gmail и WhatsApp в одну клиентскую историю.",
+          "source": "https://www.shortwave.com/docs/guides/ai-assistant/"
+        },
+        {
+          "name": "Calendar и внешние интеграции",
+          "how": "AI обращается к Google Calendar, создаёт события, предлагает время, учитывает предпочтения. Отдельная автоматизация Tasklet может выполнять фоновые задачи и связываться с внешними системами.",
+          "flow": "Договориться в email → попросить AI создать событие → проверить календарь.",
+          "value": "Завершает микроцикл договорённости без смены приложения.",
+          "caveat": "Автономность и фоновые сценарии могут относиться к отдельному продукту Tasklet, не к базовому Shortwave.",
+          "source": "https://www.shortwave.com/docs/guides/ai-assistant/"
+        }
+      ],
+      "likes": [
+        {
+          "theme": "Поиск контекста в длинной истории",
+          "what": "Пользователь из консалтинга говорит, что AI анализирует старые письма, понимает стиль и строит отчёты по клиентским отношениям.",
+          "evidence": "G2, май 2025",
+          "url": "https://www.g2.com/products/shortwave-communications-inc-shortwave/reviews"
+        },
+        {
+          "theme": "Inbox Zero и email как todo",
+          "what": "Пользователи ценят быстрые действия, AI-переписывание письма, поиск и ощущение контроля над входящими.",
+          "evidence": "G2, отзывы 2024–2025",
+          "url": "https://www.g2.com/products/shortwave-communications-inc-shortwave/reviews"
+        },
+        {
+          "theme": "AI рядом с рабочим контекстом",
+          "what": "Сокращает переходы между Gmail и отдельным LLM; полезно для поиска конкретных решений по клиентам.",
+          "evidence": "G2, отзывы консультантов и менеджеров",
+          "url": "https://www.g2.com/products/shortwave-communications-inc-shortwave/reviews"
+        }
+      ],
+      "dislikes": [
+        {
+          "theme": "Изменение привычной email-модели",
+          "what": "Некоторые пользователи не приспосабливаются к Inbox Zero/Done и возвращаются в обычный Gmail.",
+          "evidence": "G2, сентябрь 2025, негативный отзыв",
+          "url": "https://www.g2.com/products/shortwave-communications-inc-shortwave/reviews"
+        },
+        {
+          "theme": "AI-текст выглядит слишком искусственным",
+          "what": "Один консультант признаёт ценность анализа, но предпочитает сам писать клиентам, поскольку готовые ответы выглядят как AI.",
+          "evidence": "G2, май 2025",
+          "url": "https://www.g2.com/products/shortwave-communications-inc-shortwave/reviews"
+        },
+        {
+          "theme": "Нехватка CRM-интеграции, UI и языковой поддержки",
+          "what": "В отдельных отзывах запросы на лучшую работу с CRM, улучшение интерфейса/редактора и языков.",
+          "evidence": "G2, отдельные мнения — не частотность рынка",
+          "url": "https://www.g2.com/products/shortwave-communications-inc-shortwave/reviews"
+        }
+      ],
+      "takeaways": [
+        "Функция «спроси AI обо всей переписке» уже не конкурентное преимущество без устойчивого state.",
+        "AI proposals стоит группировать и показывать с evidence + approve/reject/undo.",
+        "Не смешивать найденные AI action items с собственно принятыми обязательствами.",
+        "UX Ionta должен позволять работать без обязательной привычки Inbox Zero."
+      ],
+      "ux_tests": [
+        "AI нашёл три задания из одного письма, но пользователь хочет объединить два — возможна ли правка до создания Task?",
+        "Можно ли отличить действие, предложенное AI, от реально согласованного с клиентом?",
+        "Что произойдёт с rejected предложением после следующей AI-синхронизации?"
+      ],
+      "sources": [
+        "https://www.shortwave.com/docs/guides/ai-assistant/",
+        "https://www.g2.com/products/shortwave-communications-inc-shortwave/reviews"
+      ]
+    },
+    {
+      "id": "pylon",
+      "score": 4,
+      "position": "Лучший смежный референс для accountability и клиентского контекста",
+      "audience": "B2B SaaS customer support, account teams и technical support",
+      "jobs": [
+        "Собрать сигналы клиента из Slack, email и тикетов",
+        "Понять, от кого зависит следующий шаг",
+        "Включить AI в маршрутизацию и клиентский контекст"
+      ],
+      "summary": "Pylon объединяет коммуникации и запись об issue в B2B support. Особенно важны cross-channel account view и «Waiting on you / Waiting on customer». Отзывы также предупреждают о цене breadth-first развития: частично зрелые новые функции.",
+      "features": [
+        {
+          "name": "Unified account and issue context",
+          "how": "Сообщения из Slack, Teams, email, чатов и других каналов собираются вокруг issue и account с историей и контактами. Поддерживаются интеграции с CRM и engineering.",
+          "flow": "Customer Slack/email → issue → account → related context → owner and next action.",
+          "value": "Сигналы от клиента не рассыпаются по каналам и сотрудникам.",
+          "caveat": "Фокус — B2B accounts, техническая поддержка и team handoffs; совсем другой объём и роли.",
+          "source": "https://www.g2.com/products/pylon-pylon/reviews"
+        },
+        {
+          "name": "Waiting on You / Waiting on Customer",
+          "how": "Рабочие списки/доски отделяют ожидание своей команды от ожидания клиента; это не просто read/unread, а указание стороны, от которой зависит продвижение.",
+          "flow": "Создать/открыть issue → установить responsibility/waiting status → увидеть колонку → вернуть в active на новое событие.",
+          "value": "Инструмент отвечает на вопрос «чей ход», а не только «новое ли сообщение».",
+          "caveat": "Способ автоматического определения этого статуса не подтверждён просмотренными документами; для Ionta — гипотеза, требующая теста.",
+          "source": "https://www.usepylon.com/blog/slack-microsoft-teams-integration-a-breakdown-of-options"
+        },
+        {
+          "name": "AI triage, response и аналогичные кейсы",
+          "how": "AI классифицирует обращения, предлагает маршрутизацию, ищет сходные прежние issues и материалы базы знаний, составляет ответ. Некоторые пользователи используют MCP интеграции для запроса контекста из Claude.",
+          "flow": "New issue → AI tag/route → suggested answer → review → reply and update status.",
+          "value": "Меньше ручных сортировок, более последовательные ответы.",
+          "caveat": "Рецензенты предупреждают об ошибках тегирования по началу переписки и зависимости AI от качества базы знаний.",
+          "source": "https://www.g2.com/products/pylon-pylon/reviews"
+        },
+        {
+          "name": "Customer signals в продуктовых запросах",
+          "how": "Обратная связь, запросы функций и связанные issues собираются по клиентам для анализа паттернов; отдельные account-level insights помогают обнаруживать повторы.",
+          "flow": "Входящий запрос → categorize/feature feedback → агрегировать по account → передать продукту.",
+          "value": "Один и тот же запрос сохраняет смысл при повторении клиентами.",
+          "caveat": "Паттерн aggregation интересен Ionta, но предмет здесь B2B feedback, а не ревизии deliverables.",
+          "source": "https://www.g2.com/products/pylon-pylon/reviews"
+        }
+      ],
+      "likes": [
+        {
+          "theme": "Всё о клиенте в одном месте",
+          "what": "Руководители support описывают единую историю email, Slack, meetings и CRM как впервые полученную полноценную видимость клиента.",
+          "evidence": "G2, апрель–май 2026",
+          "url": "https://www.g2.com/products/pylon-pylon/reviews"
+        },
+        {
+          "theme": "Нативные рабочие каналы",
+          "what": "Пользователи ценят, что поддержка живёт там, где клиент реально пишет — особенно Slack и Teams.",
+          "evidence": "G2, ряд отзывов 2026",
+          "url": "https://www.g2.com/products/pylon-pylon/reviews"
+        },
+        {
+          "theme": "Поддержка и быстрая доработка",
+          "what": "В нескольких отзывах отмечены отзывчивая команда, быстрый release цикл и простота ежедневного triage.",
+          "evidence": "G2, апрель 2026",
+          "url": "https://www.g2.com/products/pylon-pylon/reviews"
+        }
+      ],
+      "dislikes": [
+        {
+          "theme": "AI ошибается на длинных диалогах",
+          "what": "Один инженер жалуется, что классификация иногда сильнее зависит от первых сообщений, чем от итоговой причины; другие считают AI agent недостаточно сведущим без богатой базы.",
+          "evidence": "G2, 2026, предметные описания",
+          "url": "https://www.g2.com/products/pylon-pylon/reviews"
+        },
+        {
+          "theme": "Быстрый релиз ≠ продуманная функция",
+          "what": "Отмечены новые возможности, не проработанные до конца, и чувствительность к feature breadth; часть рецензентов противоположного мнения.",
+          "evidence": "G2, разные отзывы апреля 2026",
+          "url": "https://www.g2.com/products/pylon-pylon/reviews?page=2&qs=pros-and-cons"
+        },
+        {
+          "theme": "Mobile/reporting/API ограничения",
+          "what": "Встречаются жалобы на отсутствие полноценного мобильного UX, отчёты/фильтры и недостаток возможностей API.",
+          "evidence": "G2, апрель–май 2026",
+          "url": "https://www.g2.com/products/pylon-pylon/reviews"
+        }
+      ],
+      "takeaways": [
+        "Статус «кто должен действовать» должен стать частью модели Ionta, а не только визуальным фильтром.",
+        "AI должен иметь право пересматривать классификацию по ходу треда; хранить объяснимость и обновление state.",
+        "Быстрое добавление фич в Ionta грозит той же UX-фрагментацией — приоритетов должно быть меньше.",
+        "Account-level сигналы помогают строить Work Clusters, но не стоит создавать enterprise analytics UI."
+      ],
+      "ux_tests": [
+        "Клиент трижды меняет просьбу — обновится ли owner/stage по последнему сообщению, а не первому?",
+        "Процесс застрял: пользователь должен различать waiting for client, waiting for myself и parked.",
+        "Mobile: можно ли из очереди за 10 секунд понять причину и отправить follow-up?"
+      ],
+      "sources": [
+        "https://www.usepylon.com/blog/slack-microsoft-teams-integration-a-breakdown-of-options",
+        "https://www.g2.com/products/pylon-pylon/reviews",
+        "https://www.g2.com/products/pylon-pylon/reviews?page=2&qs=pros-and-cons"
+      ]
+    },
+    {
+      "id": "kustomer",
+      "score": 3,
+      "position": "Архитектурный референс: timeline как модель данных и событий",
+      "audience": "Большие команды customer service и omnichannel support",
+      "jobs": [
+        "Увидеть историю клиента across channels",
+        "Обрабатывать вопросы с учетом заказов/подписок/событий",
+        "Автоматизировать маршрутизацию и AI-сводки"
+      ],
+      "summary": "Kustomer полезен не как UI для фрилансера, а как подтверждение ценности timeline, где рядом могут быть сообщения и бизнес-объекты. Официальные заметки 2026 подтверждают фильтры по атрибутам задач/объектов и AI handoff/close summaries.",
+      "features": [
+        {
+          "name": "Единая хронология и custom objects",
+          "how": "Customer timeline показывает сообщения, заметки, связанные заказы и custom KObjects в хронологическом контексте с указанием канала. Разные типы событий доступны прямо из timeline.",
+          "flow": "Customer → timeline → посмотреть переписки и события → открыть KObject/заказ → вернуться к хронологии.",
+          "value": "Видна не просто переписка, а то, что реально произошло с клиентом.",
+          "caveat": "Часть подробного описания официально помечена как timeline V1; текущие UI-визуальные детали нельзя выводить из текста V1.",
+          "source": "https://help.kustomer.com/en_us/categories/navigate-timelines-BkSmbHD5ge"
+        },
+        {
+          "name": "AI summaries на разных уровнях",
+          "how": "Summary можно получать для клиента, разговора, передачи сотруднику и закрытия. Такие сводки появляются прямо в контексте; их можно обновить. Copilot помогает искать историю и менять записи.",
+          "flow": "Открыть длинную историю → summary → перейти к подтверждённым фактам → выполнить action/handoff.",
+          "value": "Разные уровни summary соответствуют разным целям пользователя.",
+          "caveat": "История, которой пользуется AI, должна быть свежей и объяснимой; неверные summary требуют исправления.",
+          "source": "https://help.kustomer.com/en_us/categories/navigate-timelines-BkSmbHD5ge"
+        },
+        {
+          "name": "Фильтруемая timeline по бизнес-сущностям",
+          "how": "Обновление января 2026 добавило фильтрацию timeline по атрибутам conversations, tasks и custom objects — не нужно листать всю историю клиента ради одного вида события.",
+          "flow": "Timeline → фильтр по типу/атрибутам → узкая подборка нужных событий.",
+          "value": "Показывает, что client-first timeline нужна фильтрация по смыслу, а не только поисковая строка.",
+          "caveat": "Слишком много конфигурации сложнее простых фильтров для соло-работы.",
+          "source": "https://help.kustomer.com/en_us/categories/2026-release-notes-BygKsnW9g"
+        },
+        {
+          "name": "Automation и управляемое ожидание",
+          "how": "Workflows реагируют на входящие/статусные события, меняют assigned owner, обновляют поля, позволяют задавать snoozing, переоткрывать обращения и делать маршрутизацию.",
+          "flow": "Event → rule → check current status → update status/tag/owner → timeline.",
+          "value": "Поддержка корректного жизненного цикла даже без ручного просмотра каждой ветки.",
+          "caveat": "Нужны настройка условий, отладка и защита от ошибочных автоматических переходов.",
+          "source": "https://help.kustomer.com/en_us/categories/workflows-H1AmBxrYel"
+        }
+      ],
+      "likes": [
+        {
+          "theme": "История клиента вместо поиска по тикетам",
+          "what": "Пользователи любят, что звонки, чаты и записи клиента собраны в одну chronologic view.",
+          "evidence": "G2 reviews 2025–26",
+          "url": "https://www.g2.com/products/kustomer/pricing"
+        },
+        {
+          "theme": "Автоматизация и комплексные интеграции",
+          "what": "Особенно ценят данные магазина/заказов и динамический клиентский контекст, который уменьшает переключение вкладок.",
+          "evidence": "G2, конкретные отзывы 2025",
+          "url": "https://www.g2.com/products/kustomer/reviews?page=10"
+        },
+        {
+          "theme": "Рабочее место агента",
+          "what": "Переключение из истории к ответу/записи/knowledge base ускоряет обработку сложных обращений.",
+          "evidence": "G2, support reviews",
+          "url": "https://www.g2.com/products/kustomer/reviews?page=10"
+        }
+      ],
+      "dislikes": [
+        {
+          "theme": "Сложность изучения системы",
+          "what": "Много состояний, кастомизации и настроек требуют обучения; UX может ощущаться тяжёлым.",
+          "evidence": "G2, отзывы и аналитика",
+          "url": "https://www.g2.com/products/kustomer/pricing"
+        },
+        {
+          "theme": "Проблемы скорости",
+          "what": "В нескольких рецензиях отмечают медленную работу, лаги поиска и уведомлений.",
+          "evidence": "G2, отзывы 2025–2026",
+          "url": "https://www.g2.com/products/kustomer/reviews?page=7"
+        },
+        {
+          "theme": "Высокая стоимость и reporting complexity",
+          "what": "Часть пользователей считает цену тяжёлой для маленьких команд, а настройку собственных отчётов нетривиальной.",
+          "evidence": "G2, обзор пользовательских жалоб",
+          "url": "https://www.g2.com/products/kustomer/reviews?page=10"
+        }
+      ],
+      "takeaways": [
+        "Модель события с типом, источником, временем, автором и ссылкой — основа People history Ionta.",
+        "Timeline должна включать revisions, delivery, approvals и cancellation, не только сообщения.",
+        "Нужны фильтры по Work/Ask/Communication, но без платформенного admin-конструктора.",
+        "Разные summary: краткий client overview и конкретная work history — разные задачи, которые нельзя слить в один длинный текст."
+      ],
+      "ux_tests": [
+        "Один клиент → 200 событий: за 10 секунд найти последнее согласование файла.",
+        "Видна ли причина, почему Work Cluster перешёл из done в reopened?",
+        "Можно ли отделить ошибочный AI-event от подтверждённого пользовательского?"
+      ],
+      "sources": [
+        "https://help.kustomer.com/en_us/categories/navigate-timelines-BkSmbHD5ge",
+        "https://help.kustomer.com/en_us/categories/2026-release-notes-BygKsnW9g",
+        "https://help.kustomer.com/en_us/categories/workflows-H1AmBxrYel",
+        "https://www.g2.com/products/kustomer/reviews?page=10",
+        "https://www.g2.com/products/kustomer/pricing"
+      ]
+    },
+    {
+      "id": "sunsama",
+      "score": 3,
+      "position": "Лучший смежный референс для Today: от backlog к выполнимому дню",
+      "audience": "Соло-профессионалы и небольшие команды с несколькими task источниками",
+      "jobs": [
+        "Планировать день без перегрузки",
+        "Превращать email в реальное действие",
+        "Сохранять связь между источником, задачей и календарём"
+      ],
+      "summary": "Sunsama не конкурирует за CRM/client hub, но демонстрирует сильный daily planning loop: выбрать, что делать, оценить время, отложить остальное и завершить день. Это применимо к Today в Ionta, особенно если источников задач станет много.",
+      "features": [
+        {
+          "name": "Guided daily planning",
+          "how": "Sunsama предлагает выбрать цели на день из календаря, inbox интеграций, backlog и weekly objectives. Пользователь оценивает нагрузку, переносит лишнее, определяет порядок, заканчивает shutdown и начинает день.",
+          "flow": "Daily Planning → import tasks → оценить planned time → defer → confirm order → Get Started.",
+          "value": "Трансформация огромного списка в выполнимую последовательность.",
+          "caveat": "Ежедневный ритуал требует участия пользователя; он может быть лишним для простого микропроцесса Ionta.",
+          "source": "https://help.sunsama.com/docs/getting-started/basics/daily-planning-the-basics/"
+        },
+        {
+          "name": "Email → Task с обратной ссылкой",
+          "how": "Панель Gmail в правой части Sunsama показывает письма с фильтрами. Можно перетащить email в task list, нажать Add to today или перетащить прямо в календарь. Task получает тему письма и встраивает исходный тред.",
+          "flow": "Подключить Gmail → открыть панель → drag email → уточнить task → отметить complete.",
+          "value": "Provenance и контекст без ручного переписывания текста из письма.",
+          "caveat": "Привязка не равнозначна автоматическому semantic extraction; примечания/подзадачи в Sunsama не синхронизируются назад в Gmail.",
+          "source": "https://help.sunsama.com/docs/integrations/gmail/"
+        },
+        {
+          "name": "Completion automation для источника",
+          "how": "На импорт или завершение связанной задачи можно назначить автоматические действия с email; сохраняются действия Open in Gmail/Archive/Mark unread.",
+          "flow": "Импортировать email → настроить action на completion → закрыть задачу → email меняет состояние в соответствии с правилом.",
+          "value": "Уменьшает разрыв Inbox vs Tasks.",
+          "caveat": "Синхронизация бизнес-обязательств остаётся тонкой: task state и message state должны быть различены.",
+          "source": "https://help.sunsama.com/docs/integrations/gmail/"
+        },
+        {
+          "name": "Timeboxing и визуальная нагрузка",
+          "how": "Задачу перетаскивают в календарь или авторазмещают горячей клавишей X. Planned duration определяет длину блока; блок может отображаться во внешнем или внутреннем календаре.",
+          "flow": "Estimate duration → calendar slot → исполнение → review фактической нагрузки.",
+          "value": "Не только приоритизация, но и физическая проверка доступного времени.",
+          "caveat": "Ionta не должен превращаться в календарный менеджер до проверки demand на capacity planning.",
+          "source": "https://help.sunsama.com/docs/usage-guides/timeboxing/"
+        },
+        {
+          "name": "Backlog, objectives и merge задач",
+          "how": "Backlog держит недатированные задачи; Weekly Objectives связывает day tasks с целями. Option/Alt + drag позволяет объединять задачи в subtask; источники из интеграций сохраняют иконки.",
+          "flow": "Backlog → pull to Today → group under objective or merge subtasks → schedule.",
+          "value": "Единый день над множеством upstream систем.",
+          "caveat": "Ручное merge не равно AI распознаванию revision цепочки.",
+          "source": "https://help.sunsama.com/docs/getting-started/basics/importing-and-creating-tasks/"
+        }
+      ],
+      "likes": [
+        {
+          "theme": "Контроль объёма работы и меньшая тревожность",
+          "what": "Отзывы хвалят guided daily planning, который помогает не переоценивать силы и фокусироваться на реальных приоритетах.",
+          "evidence": "Capterra, 2025; выборка 27 отзывов",
+          "url": "https://www.capterra.com/p/145616/Sunsama/reviews/"
+        },
+        {
+          "theme": "Спокойный дизайн и внятный onboarding",
+          "what": "Пользователи замечают понятные ежедневные ритуалы, неагрессивное введение функций и интеграцию календаря.",
+          "evidence": "Capterra, 2025 и более ранние",
+          "url": "https://www.capterra.com/p/145616/Sunsama/reviews/"
+        },
+        {
+          "theme": "Ручное планирование вместо AI-магии",
+          "what": "Некоторые предпочитают явный drag and drop и оценку времени вместо автоматического AI-планировщика.",
+          "evidence": "Capterra, май 2025",
+          "url": "https://www.capterra.com/p/145616/Sunsama/reviews/"
+        }
+      ],
+      "dislikes": [
+        {
+          "theme": "Не всегда достаточно task глубины",
+          "what": "В отзывах встречаются ограничения team-task management, подзадач, нескольких аккаунтов интеграции.",
+          "evidence": "Capterra, различные годы",
+          "url": "https://www.capterra.com/p/145616/Sunsama/reviews/"
+        },
+        {
+          "theme": "Ограничения мобильного клиента",
+          "what": "Отзыв 2025 описывает Android как вспомогательный интерфейс без полного покрытия desktop.",
+          "evidence": "Capterra, апрель 2025",
+          "url": "https://www.capterra.com/p/145616/Sunsama/reviews/"
+        },
+        {
+          "theme": "Ручной ритуал не всем подходит",
+          "what": "Daily planning сильный для людей, готовых регулярно планировать; пользователи без привычки часто не извлекают всю ценность. Это UX-риск, не формально измеренная жалоба в этой выборке.",
+          "evidence": "Аналитическая гипотеза на основе описания daily flow",
+          "url": "https://help.sunsama.com/docs/getting-started/basics/daily-planning-the-basics/"
+        }
+      ],
+      "takeaways": [
+        "Today должен отвечать «что реально требует моего внимания», не копировать backlog/Inbox.",
+        "Импорт из переписки всегда должен показывать источник и связь при завершении.",
+        "Минимальная оценка effort и возможность отложить — полезнее бесконечной автосортировки.",
+        "Не вводить календарь как обязательный UX, пока не проверено, что он улучшает задачу фрилансера."
+      ],
+      "ux_tests": [
+        "Today показывает 18 потенциальных дел: как пользователь отсечёт 14 и выберет четыре?",
+        "Письмо было источником задачи, но пришло новое уточнение: отразится ли оно в task и Today?",
+        "После завершения и пересмотра просьбы система возвращает её на день без дубликатов?"
+      ],
+      "sources": [
+        "https://help.sunsama.com/docs/getting-started/basics/daily-planning-the-basics/",
+        "https://help.sunsama.com/docs/integrations/gmail/",
+        "https://help.sunsama.com/docs/usage-guides/timeboxing/",
+        "https://help.sunsama.com/docs/getting-started/basics/importing-and-creating-tasks/",
+        "https://www.capterra.com/p/145616/Sunsama/reviews/"
+      ]
+    }
+  ]
+}
