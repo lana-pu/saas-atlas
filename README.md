@@ -39,3 +39,9 @@ python -m http.server 8000 --directory dist
 \`\`\`
 
 Visit http://localhost:8000.
+
+## Competitive UX scenario matrix
+
+[Interactive scenario benchmark](https://lana-pu.github.io/saas-atlas/ionta-ux-benchmark.html) · [Open JSON rubric](https://lana-pu.github.io/saas-atlas/ionta-ux-benchmark.json)
+
+Fifteen published competitor profiles are compared against one fictional, anonymized freelancer-client journey across nine stages. Evidence cells distinguish described mechanisms, partial analogies, and missing evidence. All hands-on walkthrough result fields remain empty until tested. No private design manuals, personal messages or internal screenshots are published with this research.
