@@ -7,7 +7,7 @@ source=json.loads((ROOT/"catalog-source.json").read_text(encoding="utf-8"))
 dist=ROOT/"dist"
 assets=dist/"assets"
 assets.mkdir(parents=True,exist_ok=True)
-for name in ["index.html","ionta.html","ionta-competitors.json","ionta-deep-dive.html","ionta-competitive-deep-dive.json","IONTA_COMPETITIVE_RESEARCH_RU.md","IONTA_SOURCE_AUDIT_RU.md","style.css","app.js","AGENTS.md","llms.txt","robots.txt",".nojekyll"]:
+for name in ["index.html","ionta.html","ionta-competitors.json","ionta-deep-dive.html","ionta-competitive-deep-dive.json","IONTA_COMPETITIVE_RESEARCH_RU.md","IONTA_SOURCE_AUDIT_RU.md","ionta-ux-benchmark.html","ionta-ux-benchmark.json","style.css","app.js","AGENTS.md","llms.txt","robots.txt",".nojekyll"]:
  if (ROOT/name).exists():shutil.copyfile(ROOT/name,dist/name)
 verified,errors,hashes=[],[],set()
 for p in source["patterns"]:
