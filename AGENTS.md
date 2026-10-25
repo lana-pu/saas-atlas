@@ -22,3 +22,15 @@ SaaS Atlas is an independent, curated UX reference site for SaaS product screens
 ## Updating
 
 Edit catalog-source.json and commit. GitHub Actions downloads screenshots, verifies image decoding/dimensions, removes unavailable patterns and deploys dist/ to Pages. Never ship remote-URL placeholders.
+
+
+## UX scenario benchmark (Ionta competitors)
+
+- /ionta-ux-benchmark.html — interactive evidence matrix for 15 SaaS competitors across nine standardized user tasks.
+- /ionta-ux-benchmark.json — machine-readable tasks, source-linked preliminary assessments, and hands-on research protocol.
+- Evidence levels are **documented / partial / unknown**. A documented mechanism means the feature was described in a source, NOT verified by an account-based usability test.
+- `hands_on_tests_completed: 0` is deliberate. Do not invent timing, task-success results, competitor absences or UX ranking.
+- An **unknown** cell is missing evidence, not a negative finding.
+- Distinguish an email reply status from the state of a user commitment, a task or an approval.
+- For visual reference, follow the external `ionta-competitive-deep-dive.json` evidence and locally verified `catalog.json` screenshots.
+- No internal product files, private source materials or user screenshots are included in this public benchmark.
