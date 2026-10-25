@@ -1,0 +1,1356 @@
+{
+  "title": "Cross-product UX scenario benchmark — public research matrix",
+  "version": "1.0",
+  "date": "2026-10-25",
+  "project": "Ionta competitor research",
+  "status": "desk_research_only",
+  "privacy": "Public research methodology only. No uploaded private materials, client data, user counts, proprietary screenshots, unshipped implementation details, or personal names are included.",
+  "methodology": {
+    "basis": "Company documentation, examples and reported features from published competitor research; all judgments are preliminary and not based on first-hand app account tests.",
+    "levels": [
+      {
+        "id": "documented",
+        "title": "Механика описана",
+        "definition": "Найдено официальное описание относящейся к задаче механики; реальное прохождение не выполнено."
+      },
+      {
+        "id": "partial",
+        "title": "Частичное пересечение",
+        "definition": "Есть смежная функция, но ключевое условие сценария пока не подтверждено."
+      },
+      {
+        "id": "unknown",
+        "title": "Нет достаточных данных",
+        "definition": "Не доказано ни наличие, ни отсутствие. Не трактовать как «у конкурента нет функции»."
+      }
+    ],
+    "hands_on_tests_completed": 0,
+    "privacy_note": "Не публиковать внутренние схемы данных, реальные пользовательские сообщения, приватные изображения, продуктовые метрики и документы.",
+    "source": "./ionta-competitive-deep-dive.json"
+  },
+  "scenario": {
+    "title": "Один клиент, несколько каналов, одна изменяющаяся работа",
+    "summary": "Фрилансер получает просьбу по email, уточнение по второму каналу, сдаёт результат, получает правку, ждёт согласования и завершает работу.",
+    "steps": [
+      {
+        "step": 1,
+        "title": "Подключить источники",
+        "task": "Подключить рабочую почту и личный мессенджер; понять границы доступа",
+        "criterion": "connect"
+      },
+      {
+        "step": 2,
+        "title": "Найти контекст клиента",
+        "task": "Найти все относящиеся к заказу сообщения и оригиналы",
+        "criterion": "client"
+      },
+      {
+        "step": 3,
+        "title": "Зафиксировать просьбу",
+        "task": "Найти запрос, срок, источник; сделать из него рабочий пункт",
+        "criterion": "request"
+      },
+      {
+        "step": 4,
+        "title": "Учесть уточнение",
+        "task": "Получить новую версию просьбы из другого канала без дубликата",
+        "criterion": "revision"
+      },
+      {
+        "step": 5,
+        "title": "Определить следующий ход",
+        "task": "После ответа определить, кто теперь должен действовать",
+        "criterion": "turn"
+      },
+      {
+        "step": 6,
+        "title": "Ждать нужного результата",
+        "task": "Выделить ожидание материала либо одобрения, а не только ответа",
+        "criterion": "waiting"
+      },
+      {
+        "step": 7,
+        "title": "Сдать, поправить и закрыть",
+        "task": "Передать результат, получить правку, заново открыть, зафиксировать согласование",
+        "criterion": "completion"
+      },
+      {
+        "step": 8,
+        "title": "Посмотреть завтрашние приоритеты",
+        "task": "Увидеть незакрытые и зависящие от клиента дела в утреннем обзоре",
+        "criterion": "today"
+      },
+      {
+        "step": 9,
+        "title": "Поправить ошибку автоматики",
+        "task": "AI неверно пометил сообщение; выяснить причину и откатить",
+        "criterion": "control"
+      }
+    ]
+  },
+  "criteria": [
+    {
+      "id": "connect",
+      "name": "Подключение каналов",
+      "short": "Каналы",
+      "task": "Подключить рабочую почту и мессенджер, понять объём доступа и ограничения истории",
+      "observable": "Какие каналы поддерживаются? Личный или бизнес-аккаунт? Что увидит продукт, что будет пропущено, где отключить доступ?",
+      "failure": "Не считать несколько email-аккаунтов равноценными email + личный WhatsApp."
+    },
+    {
+      "id": "client",
+      "name": "Восстановление контекста клиента",
+      "short": "Контекст",
+      "task": "Найти историю одного клиента, включая разные переписки, участников и источники",
+      "observable": "Где находится точка входа по клиенту? Видна ли хронология разных каналов и первоисточник?",
+      "failure": "Контактная CRM-карточка и единая канальная лента — разные вещи."
+    },
+    {
+      "id": "request",
+      "name": "Извлечение просьбы из сообщения",
+      "short": "Просьба",
+      "task": "Найти просьбу клиента, срок и цитату исходного сообщения; связать с действием",
+      "observable": "Есть ли AI extraction? Создаётся запись сама или по подтверждению? Можно ли открыть исходник?",
+      "failure": "Пересказ переписки сам по себе ещё не подтверждённая задача."
+    },
+    {
+      "id": "revision",
+      "name": "Новое уточнение без дубликата",
+      "short": "Правки",
+      "task": "После исходной просьбы получить уточнение из второго канала и сохранить историю единой работы",
+      "observable": "Обновляет ли продукт старую запись? Можно ли объединить, разделить, откатить? Видна ли история изменения договорённости?",
+      "failure": "Merge переписок не доказывает merge клиентских обязательств."
+    },
+    {
+      "id": "turn",
+      "name": "Кто должен сделать следующий шаг",
+      "short": "Чей ход",
+      "task": "После ответа выяснить, кто теперь должен действовать, и почему",
+      "observable": "Отдельные my-turn / their-turn / overdue? Статус на сообщении, разговоре или рабочем обязательстве?",
+      "failure": "Ответить на письмо — не значит выполнить обещание клиенту."
+    },
+    {
+      "id": "waiting",
+      "name": "Ожидание материалов / одобрения",
+      "short": "Ожидания",
+      "task": "Зафиксировать, что теперь ждём от клиента исходники, согласование либо оплату; не терять зависимость от результата",
+      "observable": "Есть ли ожидание конкретного результата с датой и доказательством, а не просто unanswered email?",
+      "failure": "Status «Waiting for reply» не равен ожиданию материалов или согласования."
+    },
+    {
+      "id": "completion",
+      "name": "Сдача, правка, согласование, закрытие",
+      "short": "Закрытие",
+      "task": "Отметить сдачу, получить правку, открыть работу заново и записать финальное согласование",
+      "observable": "Сохраняются ли цепочка версий, status reopen, источник последней правки и согласования?",
+      "failure": "Mark email as done ≠ work approved; ticket resolved ≠ deliverable approved."
+    },
+    {
+      "id": "today",
+      "name": "Утренний фокус",
+      "short": "Сегодня",
+      "task": "За короткий обзор понять, что требует действия сегодня и что зависит от клиента",
+      "observable": "Есть ли единая очередь, приоритизация, дедлайны, глубинные ссылки в первоисточники?",
+      "failure": "Список задач без объяснения приоритетов не равен контекстному daily focus."
+    },
+    {
+      "id": "control",
+      "name": "Контроль AI и исправление ошибки",
+      "short": "Контроль AI",
+      "task": "AI неверно классифицировал сообщение или создал лишнюю задачу; найти причину, отклонить и восстановить исходное состояние",
+      "observable": "Нужен review? Можно ли отменить, исключить источник, изменить порог и просмотреть журнал?",
+      "failure": "Наличие AI-черновика не доказывает explainability или undo."
+    }
+  ],
+  "products": [
+    {
+      "id": "alfred_",
+      "name": "alfred_",
+      "group": "priority",
+      "audience": "Фрилансеры, консультанты, основатели и другие клиентские профессионалы",
+      "position": "Прямой функциональный конкурент: извлечение обязательств и задач, ожидания, Daily Brief",
+      "review_link": "./ionta-deep-dive.html?product=alfred_",
+      "assessments": {
+        "connect": {
+          "level": "partial",
+          "note": "Обработка Gmail/Outlook описана; личный WhatsApp в той же клиентской хронологии не подтверждён.",
+          "evidence": {
+            "title": "AI extraction: asks и commitments",
+            "url": "https://get-alfred.ai/docs/tasks/task-extraction",
+            "feature_summary": "Сканирует email на две категории: пользователь обещал сделать (I'll send by Tuesday) и клиент попросил сделать (Can you review by Friday?). Извлекает срок и создаёт или предлагает задачу, сохраняя ссылку на исходный thread."
+          }
+        },
+        "client": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "request": {
+          "level": "documented",
+          "note": "Документация описывает извлечение asks и commitments со сроком. Другая страница говорит о one-click создании, режим автоматизации требует проверки.",
+          "evidence": {
+            "title": "AI extraction: asks и commitments",
+            "url": "https://get-alfred.ai/docs/tasks/task-extraction",
+            "feature_summary": "Сканирует email на две категории: пользователь обещал сделать (I'll send by Tuesday) и клиент попросил сделать (Can you review by Friday?). Извлекает срок и создаёт или предлагает задачу, сохраняя ссылку на исходный thread."
+          }
+        },
+        "revision": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "turn": {
+          "level": "documented",
+          "note": "Документированы waiting on you / them для email-переписки, но не состояние работы между несколькими каналами.",
+          "evidence": {
+            "title": "Отдельные waiting-on-you и waiting-on-them",
+            "url": "https://get-alfred.ai/docs/getting-started/overview",
+            "feature_summary": "Из email вычисляет сообщения, где требуется мой ответ, и threads, где я ожидаю реакцию собеседника; показывает в Brief и Inbox с разной срочностью."
+          }
+        },
+        "waiting": {
+          "level": "partial",
+          "note": "Отслеживание ожидаемого ответа не доказывает ожидание материалов и одобрения deliverable.",
+          "evidence": {
+            "title": "Отдельные waiting-on-you и waiting-on-them",
+            "url": "https://get-alfred.ai/docs/getting-started/overview",
+            "feature_summary": "Из email вычисляет сообщения, где требуется мой ответ, и threads, где я ожидаю реакцию собеседника; показывает в Brief и Inbox с разной срочностью."
+          }
+        },
+        "completion": {
+          "level": "partial",
+          "note": "Задачи могут быть закрыты; cycle revision/reopen не документирован.",
+          "evidence": {
+            "title": "Daily Brief, отслеживание задержанных обязательств",
+            "url": "https://get-alfred.ai/help",
+            "feature_summary": "Сводка дня объединяет письма, draft replies, календарь, задачи и просроченные обещания. Старые задачи отмечаются stale после 7 дней, overdue после 3 дней опоздания переводятся в critical."
+          }
+        },
+        "today": {
+          "level": "documented",
+          "note": "Daily Brief связывает письма, задачи, обещания и дедлайны.",
+          "evidence": {
+            "title": "Daily Brief, отслеживание задержанных обязательств",
+            "url": "https://get-alfred.ai/help",
+            "feature_summary": "Сводка дня объединяет письма, draft replies, календарь, задачи и просроченные обещания. Старые задачи отмечаются stale после 7 дней, overdue после 3 дней опоздания переводятся в critical."
+          }
+        },
+        "control": {
+          "level": "documented",
+          "note": "Есть настройки extraction, VIP/explicit deadline и действие Not a task; режим auto vs click требует уточнения.",
+          "evidence": {
+            "title": "Extraction controls и Not a task",
+            "url": "https://get-alfred.ai/docs/tasks/task-extraction",
+            "feature_summary": "В Settings → Tasks → Extraction можно выключить автосбор, ограничить VIP/contact/domain или требовать явный дедлайн. В Daily Brief ложное срабатывание отклоняют командой Not a task, что служит сигналом персональной модели."
+          }
+        }
+      }
+    },
+    {
+      "id": "moxie",
+      "name": "Moxie",
+      "group": "priority",
+      "audience": "Фрилансеры, солопренёры, небольшие агентства",
+      "position": "Самый близкий конкурент по аудитории и сквозному процессу фрилансера",
+      "review_link": "./ionta-deep-dive.html?product=moxie",
+      "assessments": {
+        "connect": {
+          "level": "partial",
+          "note": "Документированы email, SMS и звонки известных контактов, но не личный WhatsApp; история добавленного позже клиента неполная.",
+          "evidence": {
+            "title": "Inbox, который фильтрует по известным клиентам",
+            "url": "https://help.withmoxie.com/en/articles/16181668-understand-inbox-communications",
+            "feature_summary": "В Inbox → Messages попадают email-переписки, текстовые сообщения и звонки известных Moxie контактов/opportunities. Можно переключить канал, найти разговор и изменить Inbox/Snoozed/Archived. Email неизвестных контактов Moxie намеренно не импортирует; при добавлении контакта позже старые письма пока не подгружаются."
+          }
+        },
+        "client": {
+          "level": "documented",
+          "note": "Клиентская карточка связывает коммуникации и работу. Нужен просмотр живого интерфейса для проверки единой хронологии.",
+          "evidence": {
+            "title": "Клиентская workspace вместо набора вкладок",
+            "url": "https://help.withmoxie.com/en/articles/16240983-moving-from-moxie-v3-to-moxie-v4",
+            "feature_summary": "V4 показывает контакты, заметки, историю, проекты, счета, договоры и файлы как связанные записи с числами/суммами; переход сохраняет клиентский контекст. Клиента можно закрепить звездой во вторичной навигации."
+          }
+        },
+        "request": {
+          "level": "documented",
+          "note": "Из открытого сообщения можно создать Project, Task, Ticket или Opportunity; сохраняется связь с источником. Тип выбирает пользователь.",
+          "evidence": {
+            "title": "Создание работы из источника",
+            "url": "https://help.withmoxie.com/en/articles/16740165-create-work-from-an-inbox-conversation",
+            "feature_summary": "В заголовке выбранного email, SMS-диалога или звонка находится Create from… Пользователь выбирает Project, Task, Ticket или Opportunity. У проекта вводятся сроки/финансы; Task создаётся немедленно и открывается в редакторе; Ticket готовит запрос и отдельно предлагает отправить email; Opportunity идёт в pipeline."
+          }
+        },
+        "revision": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "turn": {
+          "level": "partial",
+          "note": "Inbox и задания есть, но независимая ось «чей ход» для межканального обязательства не подтверждена.",
+          "evidence": {
+            "title": "Inbox, который фильтрует по известным клиентам",
+            "url": "https://help.withmoxie.com/en/articles/16181668-understand-inbox-communications",
+            "feature_summary": "В Inbox → Messages попадают email-переписки, текстовые сообщения и звонки известных Moxie контактов/opportunities. Можно переключить канал, найти разговор и изменить Inbox/Snoozed/Archived. Email неизвестных контактов Moxie намеренно не импортирует; при добавлении контакта позже старые письма пока не подгружаются."
+          }
+        },
+        "waiting": {
+          "level": "partial",
+          "note": "В PM есть задачи и статусы; отдельное ожидание клиентского материала не установлено.",
+          "evidence": {
+            "title": "Projects, Tasks, Workday и Portfolio",
+            "url": "https://help.withmoxie.com/en/articles/16179940-understand-work-in-moxie",
+            "feature_summary": "Проект объединяет клиента, сроки, цены, задачи, время и портал. Task поддерживает статус, ответственных, даты, приоритет, вложения, подзадачи, комментарии и учёт времени. Workday отвечает за приоритеты дня, Portfolio — за состояние портфеля."
+          }
+        },
+        "completion": {
+          "level": "partial",
+          "note": "Статусы задач и проектов доступны, но сценарий «сдано → правка → повторное открытие → согласование» не проверен.",
+          "evidence": {
+            "title": "Projects, Tasks, Workday и Portfolio",
+            "url": "https://help.withmoxie.com/en/articles/16179940-understand-work-in-moxie",
+            "feature_summary": "Проект объединяет клиента, сроки, цены, задачи, время и портал. Task поддерживает статус, ответственных, даты, приоритет, вложения, подзадачи, комментарии и учёт времени. Workday отвечает за приоритеты дня, Portfolio — за состояние портфеля."
+          }
+        },
+        "today": {
+          "level": "documented",
+          "note": "Есть Workday для обзора текущей работы, однако точная релевантность клиентскому turn-state неизвестна.",
+          "evidence": {
+            "title": "Projects, Tasks, Workday и Portfolio",
+            "url": "https://help.withmoxie.com/en/articles/16179940-understand-work-in-moxie",
+            "feature_summary": "Проект объединяет клиента, сроки, цены, задачи, время и портал. Task поддерживает статус, ответственных, даты, приоритет, вложения, подзадачи, комментарии и учёт времени. Workday отвечает за приоритеты дня, Portfolio — за состояние портфеля."
+          }
+        },
+        "control": {
+          "level": "partial",
+          "note": "AI создаёт черновик проекта с явным Review, но это не полноценный контроль AI extraction из переписки.",
+          "evidence": {
+            "title": "AI-предложение проекта с review",
+            "url": "https://help.withmoxie.com/en/articles/16179941-create-and-configure-a-project",
+            "feature_summary": "При создании проекта пользователь описывает заказ естественным языком; Moxie Assistant готовит структуру задач, затем открывает обычный редактор для проверки клиента, дат и стоимости; проект не создаётся окончательно без подтверждения."
+          }
+        }
+      }
+    },
+    {
+      "id": "folk",
+      "name": "folk",
+      "group": "priority",
+      "audience": "Основатели, небольшие команды, агентства, консультанты и менеджеры отношений",
+      "position": "Самое близкое продуктовое мышление: отношения прежде канала и pipeline",
+      "review_link": "./ionta-deep-dive.html?product=folk",
+      "assessments": {
+        "connect": {
+          "level": "documented",
+          "note": "Официально описаны email, встречи и личный WhatsApp 1:1 в Activity; ограничения истории и разрешений зависят от тарифа.",
+          "evidence": {
+            "title": "Interactions в профиле контакта",
+            "url": "https://help.folk.app/en/articles/5007315-track-interactions-emails-calendar-events-whatsapp-conversations",
+            "feature_summary": "После подключения Google/Microsoft и WhatsApp индивидуальные 1:1 разговоры подтягиваются к соответствующему person record. Письма и события появляются в реальном времени. Interaction можно открыть в folk или перейти в оригинал Gmail/WhatsApp."
+          }
+        },
+        "client": {
+          "level": "documented",
+          "note": "Activity собирает разрешённые события по контакту из email, calendar и WhatsApp.",
+          "evidence": {
+            "title": "Interactions в профиле контакта",
+            "url": "https://help.folk.app/en/articles/5007315-track-interactions-emails-calendar-events-whatsapp-conversations",
+            "feature_summary": "После подключения Google/Microsoft и WhatsApp индивидуальные 1:1 разговоры подтягиваются к соответствующему person record. Письма и события появляются в реальном времени. Interaction можно открыть в folk или перейти в оригинал Gmail/WhatsApp."
+          }
+        },
+        "request": {
+          "level": "partial",
+          "note": "AI Recap показывает обсуждения и next steps, но on-demand recap не является подтверждённой рабочей записью.",
+          "evidence": {
+            "title": "AI Recap Assistant",
+            "url": "https://help.folk.app/en/articles/12893225-recap-assistant",
+            "feature_summary": "В карточке контакта, компании или сделки нажать Generate recap. Система сканирует последние письма, встречи, заметки, WhatsApp, LinkedIn и возвращает структурированную сводку о том, кто общался, что решено и какие next steps. Шаблон/инструкции можно менять на уровне workspace."
+          }
+        },
+        "revision": {
+          "level": "partial",
+          "note": "Recap можно обновить, но полноценное версионирование одной клиентской работы не описано.",
+          "evidence": {
+            "title": "AI Recap Assistant",
+            "url": "https://help.folk.app/en/articles/12893225-recap-assistant",
+            "feature_summary": "В карточке контакта, компании или сделки нажать Generate recap. Система сканирует последние письма, встречи, заметки, WhatsApp, LinkedIn и возвращает структурированную сводку о том, кто общался, что решено и какие next steps. Шаблон/инструкции можно менять на уровне workspace."
+          }
+        },
+        "turn": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "waiting": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "completion": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "today": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "control": {
+          "level": "partial",
+          "note": "Генерация recap запускается пользователем; прямого редактирования recap нет, исправляют источник.",
+          "evidence": {
+            "title": "AI Recap Assistant",
+            "url": "https://help.folk.app/en/articles/12893225-recap-assistant",
+            "feature_summary": "В карточке контакта, компании или сделки нажать Generate recap. Система сканирует последние письма, встречи, заметки, WhatsApp, LinkedIn и возвращает структурированную сводку о том, кто общался, что решено и какие next steps. Шаблон/инструкции можно менять на уровне workspace."
+          }
+        }
+      }
+    },
+    {
+      "id": "missive",
+      "name": "Missive",
+      "group": "priority",
+      "audience": "Команды, агентства, сервисные бизнесы с многоканальной коммуникацией",
+      "position": "Самый сильный ориентир для структуры conversation → work",
+      "review_link": "./ionta-deep-dive.html?product=missive",
+      "assessments": {
+        "connect": {
+          "level": "partial",
+          "note": "Поддерживаются email и WhatsApp через бизнес-каналы, но доступ к личному WhatsApp пользователя не подтверждён.",
+          "evidence": {
+            "title": "Unified conversations",
+            "url": "https://missiveapp.com/docs/core-features/conversations",
+            "feature_summary": "Email, SMS, WhatsApp, live chat и соцканалы ведутся в единой рабочей области. В conversation собраны внешние сообщения, внутренние comments/@mentions, drafts, labels и задачи; личные разговоры можно расшарить."
+          }
+        },
+        "client": {
+          "level": "partial",
+          "note": "Общий Inbox собирает каналы; отдельная person-centered межканальная хронология не подтверждена.",
+          "evidence": {
+            "title": "Unified conversations",
+            "url": "https://missiveapp.com/docs/core-features/conversations",
+            "feature_summary": "Email, SMS, WhatsApp, live chat и соцканалы ведутся в единой рабочей области. В conversation собраны внешние сообщения, внутренние comments/@mentions, drafts, labels и задачи; личные разговоры можно расшарить."
+          }
+        },
+        "request": {
+          "level": "documented",
+          "note": "Conversation tasks, subtasks и standalone tasks объединены в Tasks view; AI Rules могут извлекать action items.",
+          "evidence": {
+            "title": "Три вида Task и единая очередь",
+            "url": "https://missiveapp.com/docs/core-features/tasks",
+            "feature_summary": "Conversation task = назначенная переписка как целая задача; Subtask = пункт внутри разговора; Standalone = отдельная работа. Все появляются в Tasks view, где можно менять To-Do, In Progress, Closed, сроки и исполнителей."
+          }
+        },
+        "revision": {
+          "level": "partial",
+          "note": "Merge/snooze разговоров есть, но это не доказательство версионности единого клиентского deliverable.",
+          "evidence": {
+            "title": "Merge, snooze и авто-follow-up",
+            "url": "https://missiveapp.com/features",
+            "feature_summary": "Объединяет связанные разговоры; snooze откладывает возвращение в Inbox; rules могут организовать автоматические напоминания и follow-ups."
+          }
+        },
+        "turn": {
+          "level": "partial",
+          "note": "Статусы To Do / In Progress / Closed показывают ход задач, но не чья очередь в отношениях с клиентом.",
+          "evidence": {
+            "title": "Три вида Task и единая очередь",
+            "url": "https://missiveapp.com/docs/core-features/tasks",
+            "feature_summary": "Conversation task = назначенная переписка как целая задача; Subtask = пункт внутри разговора; Standalone = отдельная работа. Все появляются в Tasks view, где можно менять To-Do, In Progress, Closed, сроки и исполнителей."
+          }
+        },
+        "waiting": {
+          "level": "partial",
+          "note": "Snooze откладывает разговор; не равен ожиданию конкретного материала или одобрения.",
+          "evidence": {
+            "title": "Merge, snooze и авто-follow-up",
+            "url": "https://missiveapp.com/features",
+            "feature_summary": "Объединяет связанные разговоры; snooze откладывает возвращение в Inbox; rules могут организовать автоматические напоминания и follow-ups."
+          }
+        },
+        "completion": {
+          "level": "partial",
+          "note": "Задача может быть закрыта, но approval/reopen с историей scope требует live-проверки.",
+          "evidence": {
+            "title": "Три вида Task и единая очередь",
+            "url": "https://missiveapp.com/docs/core-features/tasks",
+            "feature_summary": "Conversation task = назначенная переписка как целая задача; Subtask = пункт внутри разговора; Standalone = отдельная работа. Все появляются в Tasks view, где можно менять To-Do, In Progress, Closed, сроки и исполнителей."
+          }
+        },
+        "today": {
+          "level": "partial",
+          "note": "Есть Tasks view; единый ежедневный обзор client commitments не подтверждён.",
+          "evidence": {
+            "title": "Три вида Task и единая очередь",
+            "url": "https://missiveapp.com/docs/core-features/tasks",
+            "feature_summary": "Conversation task = назначенная переписка как целая задача; Subtask = пункт внутри разговора; Standalone = отдельная работа. Все появляются в Tasks view, где можно менять To-Do, In Progress, Closed, сроки и исполнителей."
+          }
+        },
+        "control": {
+          "level": "partial",
+          "note": "AI Rules конфигурируются, но review-before-create для всех автоматических задач не подтверждён.",
+          "evidence": {
+            "title": "AI Rules — семантическое действие",
+            "url": "https://missiveapp.com/docs/advanced-features/rules/ai-rules",
+            "feature_summary": "Настроить rule: фильтр отправителя/канала → Prompt condition → AI классифицирует намерение, дату, urgency → Add tasks with AI или AI note/labels/draft. Нужна подписка Productive/Business и внешний API ключ OpenAI/Anthropic/Gemini."
+          }
+        }
+      }
+    },
+    {
+      "id": "front",
+      "name": "Front",
+      "group": "priority",
+      "audience": "B2B support, success, operations и командные inbox-процессы",
+      "position": "Ключевой UX-референс состояния входящих и customer context",
+      "review_link": "./ionta-deep-dive.html?product=front",
+      "assessments": {
+        "connect": {
+          "level": "partial",
+          "note": "Поддерживает множество каналов, в том числе бизнес-мессенджеры; личный WhatsApp и сквозная история не подтверждены.",
+          "evidence": {
+            "title": "Unified Inbox и internal collaboration",
+            "url": "https://www.g2.com/products/front/reviews",
+            "feature_summary": "Сообщения из email, SMS, WhatsApp, чата и других разрешённых каналов в общем workspace. Разговор назначается сотруднику, в нём можно писать невидимые клиенту комментарии, вызывать коллегу и применять автоматические правила."
+          }
+        },
+        "client": {
+          "level": "documented",
+          "note": "Contact Details содержит доступные этому пользователю conversations по контакту.",
+          "evidence": {
+            "title": "Контекст клиента в боковой панели",
+            "url": "https://help.front.com/en/articles/2226",
+            "feature_summary": "В Contact Details можно переключаться между person и account, редактировать поля, заметки и видеть список разговоров across channels, доступных сотруднику. Каждый conversation можно открыть отдельно."
+          }
+        },
+        "request": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "revision": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "turn": {
+          "level": "partial",
+          "note": "Ticketing mode предлагает Open/Waiting/Resolved, но это статус тикета, не доказанное «я/клиент должны».",
+          "evidence": {
+            "title": "Status tabs и ticketing waiting",
+            "url": "https://help.front.com/en/articles/2159",
+            "feature_summary": "По умолчанию shared inbox переключается Unassigned/Assigned/Snoozed/Archived либо Open/Snoozed/Archived. В ticketing mode появляются отдельные Open/Waiting/Resolved. Смена состояния переносит разговор между табами."
+          }
+        },
+        "waiting": {
+          "level": "partial",
+          "note": "Waiting существует как тикетный статус; конкретные ожидаемые файлы/согласования не подтверждены.",
+          "evidence": {
+            "title": "Status tabs и ticketing waiting",
+            "url": "https://help.front.com/en/articles/2159",
+            "feature_summary": "По умолчанию shared inbox переключается Unassigned/Assigned/Snoozed/Archived либо Open/Snoozed/Archived. В ticketing mode появляются отдельные Open/Waiting/Resolved. Смена состояния переносит разговор между табами."
+          }
+        },
+        "completion": {
+          "level": "partial",
+          "note": "Activity history показывает изменения, reopen и timeline операций, но не версию scope клиентской работы.",
+          "evidence": {
+            "title": "Activity history и audit trail",
+            "url": "https://help.front.com/en/articles/2414",
+            "feature_summary": "Для разговора записываются assign/unassign, snooze, archive/reopen, смена статусов и полей, правила, merge/split, время и исполнитель. Строку активности можно раскрыть и выяснить причину."
+          }
+        },
+        "today": {
+          "level": "partial",
+          "note": "Есть рабочие очереди, ориентированные на команду, не на одинокого фрилансера.",
+          "evidence": {
+            "title": "Unified Inbox и internal collaboration",
+            "url": "https://www.g2.com/products/front/reviews",
+            "feature_summary": "Сообщения из email, SMS, WhatsApp, чата и других разрешённых каналов в общем workspace. Разговор назначается сотруднику, в нём можно писать невидимые клиенту комментарии, вызывать коллегу и применять автоматические правила."
+          }
+        },
+        "control": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        }
+      }
+    },
+    {
+      "id": "pylon",
+      "name": "Pylon",
+      "group": "adjacent",
+      "audience": "B2B SaaS customer support, account teams и technical support",
+      "position": "Лучший смежный референс для accountability и клиентского контекста",
+      "review_link": "./ionta-deep-dive.html?product=pylon",
+      "assessments": {
+        "connect": {
+          "level": "partial",
+          "note": "Связывает Slack, Teams, email и другие B2B каналы; личный WhatsApp не подтверждён.",
+          "evidence": {
+            "title": "Unified account and issue context",
+            "url": "https://www.g2.com/products/pylon-pylon/reviews",
+            "feature_summary": "Сообщения из Slack, Teams, email, чатов и других каналов собираются вокруг issue и account с историей и контактами. Поддерживаются интеграции с CRM и engineering."
+          }
+        },
+        "client": {
+          "level": "documented",
+          "note": "Issue и customer account объединяют кросс-канальный контекст на уровне клиента.",
+          "evidence": {
+            "title": "Unified account and issue context",
+            "url": "https://www.g2.com/products/pylon-pylon/reviews",
+            "feature_summary": "Сообщения из Slack, Teams, email, чатов и других каналов собираются вокруг issue и account с историей и контактами. Поддерживаются интеграции с CRM и engineering."
+          }
+        },
+        "request": {
+          "level": "partial",
+          "note": "Issues моделируют клиентские запросы, но auto source-linked extraction индивидуальных просьб не доказан.",
+          "evidence": {
+            "title": "Unified account and issue context",
+            "url": "https://www.g2.com/products/pylon-pylon/reviews",
+            "feature_summary": "Сообщения из Slack, Teams, email, чатов и других каналов собираются вокруг issue и account с историей и контактами. Поддерживаются интеграции с CRM и engineering."
+          }
+        },
+        "revision": {
+          "level": "partial",
+          "note": "Account-level сбор повторов полезен как аналогия, но цепочка правок одного deliverable не подтверждена.",
+          "evidence": {
+            "title": "Customer signals в продуктовых запросах",
+            "url": "https://www.g2.com/products/pylon-pylon/reviews",
+            "feature_summary": "Обратная связь, запросы функций и связанные issues собираются по клиентам для анализа паттернов; отдельные account-level insights помогают обнаруживать повторы."
+          }
+        },
+        "turn": {
+          "level": "documented",
+          "note": "В UI встречаются Waiting on You / Waiting on Customer; автоматическое определение такого статуса не подтверждено.",
+          "evidence": {
+            "title": "Waiting on You / Waiting on Customer",
+            "url": "https://www.usepylon.com/blog/slack-microsoft-teams-integration-a-breakdown-of-options",
+            "feature_summary": "Рабочие списки/доски отделяют ожидание своей команды от ожидания клиента; это не просто read/unread, а указание стороны, от которой зависит продвижение."
+          }
+        },
+        "waiting": {
+          "level": "partial",
+          "note": "Responsibility хорошо видна, но не подтверждено отслеживание конкретных недостающих материалов/оплаты.",
+          "evidence": {
+            "title": "Waiting on You / Waiting on Customer",
+            "url": "https://www.usepylon.com/blog/slack-microsoft-teams-integration-a-breakdown-of-options",
+            "feature_summary": "Рабочие списки/доски отделяют ожидание своей команды от ожидания клиента; это не просто read/unread, а указание стороны, от которой зависит продвижение."
+          }
+        },
+        "completion": {
+          "level": "partial",
+          "note": "Issue lifecycle есть, но delivery/approval/revision фрилансера не установлен.",
+          "evidence": {
+            "title": "Unified account and issue context",
+            "url": "https://www.g2.com/products/pylon-pylon/reviews",
+            "feature_summary": "Сообщения из Slack, Teams, email, чатов и других каналов собираются вокруг issue и account с историей и контактами. Поддерживаются интеграции с CRM и engineering."
+          }
+        },
+        "today": {
+          "level": "partial",
+          "note": "Рабочая очередь issues есть; её применимость к ежедневной фокусировке соло требует теста.",
+          "evidence": {
+            "title": "Unified account and issue context",
+            "url": "https://www.g2.com/products/pylon-pylon/reviews",
+            "feature_summary": "Сообщения из Slack, Teams, email, чатов и других каналов собираются вокруг issue и account с историей и контактами. Поддерживаются интеграции с CRM и engineering."
+          }
+        },
+        "control": {
+          "level": "partial",
+          "note": "AI triage и tags документированы; не проверены полнота undo и человеко-контролируемое подтверждение.",
+          "evidence": {
+            "title": "AI triage, response и аналогичные кейсы",
+            "url": "https://www.g2.com/products/pylon-pylon/reviews",
+            "feature_summary": "AI классифицирует обращения, предлагает маршрутизацию, ищет сходные прежние issues и материалы базы знаний, составляет ответ. Некоторые пользователи используют MCP интеграции для запроса контекста из Claude."
+          }
+        }
+      }
+    },
+    {
+      "id": "shortwave",
+      "name": "Shortwave",
+      "group": "adjacent",
+      "audience": "Профессионалы с интенсивной Gmail-перепиской, соло-специалисты, небольшие команды",
+      "position": "Самый полезный AI-first UX-референс: поиск, объяснимость и подтверждение действий",
+      "review_link": "./ionta-deep-dive.html?product=shortwave",
+      "assessments": {
+        "connect": {
+          "level": "partial",
+          "note": "AI-first email, нет подтверждения личного WhatsApp в едином профиле.",
+          "evidence": {
+            "title": "Контекстный AI Assistant",
+            "url": "https://www.shortwave.com/docs/guides/ai-assistant/",
+            "feature_summary": "AI открыт в правой панели или по Cmd+J. Понимает текущий экран, а также запросы типа «this email». Может суммировать длинную ветку, получить action items из нескольких писем, искать конкретную информацию, создавать черновики."
+          }
+        },
+        "client": {
+          "level": "partial",
+          "note": "Natural language search по email помогает восстановить контекст, но не доказывает стабильную сущность клиента.",
+          "evidence": {
+            "title": "Natural-language search и аналитика писем",
+            "url": "https://www.shortwave.com/docs/guides/ai-assistant/",
+            "feature_summary": "Запросы формулируются естественным языком; результаты связываются с исходными тредами и специальными поисковыми выражениями about:. AI умеет анализировать письма, например собрать недавние отзывы клиентов."
+          }
+        },
+        "request": {
+          "level": "partial",
+          "note": "AI может извлечь action items, однако устойчивый Ask с источником и историей правок не показан.",
+          "evidence": {
+            "title": "Контекстный AI Assistant",
+            "url": "https://www.shortwave.com/docs/guides/ai-assistant/",
+            "feature_summary": "AI открыт в правой панели или по Cmd+J. Понимает текущий экран, а также запросы типа «this email». Может суммировать длинную ветку, получить action items из нескольких писем, искать конкретную информацию, создавать черновики."
+          }
+        },
+        "revision": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "turn": {
+          "level": "partial",
+          "note": "Можно найти threads с ожидаемыми ответами, но это не состояние клиентского обязательства.",
+          "evidence": {
+            "title": "Emails as todos и контроль follow-ups",
+            "url": "https://www.shortwave.com/docs/guides/ai-assistant/",
+            "feature_summary": "Письма превращаются в actionable todo, могут оставаться в списке приоритетов. AI умеет найти клиентов, которым отправили письма, но которые ещё не ответили."
+          }
+        },
+        "waiting": {
+          "level": "partial",
+          "note": "Follow-up относится к письмам, не к ожидаемым материалам.",
+          "evidence": {
+            "title": "Emails as todos и контроль follow-ups",
+            "url": "https://www.shortwave.com/docs/guides/ai-assistant/",
+            "feature_summary": "Письма превращаются в actionable todo, могут оставаться в списке приоритетов. AI умеет найти клиентов, которым отправили письма, но которые ещё не ответили."
+          }
+        },
+        "completion": {
+          "level": "partial",
+          "note": "Email as to-do существует; approval рабочего результата — нет подтверждения.",
+          "evidence": {
+            "title": "Emails as todos и контроль follow-ups",
+            "url": "https://www.shortwave.com/docs/guides/ai-assistant/",
+            "feature_summary": "Письма превращаются в actionable todo, могут оставаться в списке приоритетов. AI умеет найти клиентов, которым отправили письма, но которые ещё не ответили."
+          }
+        },
+        "today": {
+          "level": "partial",
+          "note": "AI-план помогает разобрать inbox; нет доказательства клиентской ежедневной очереди обязательств.",
+          "evidence": {
+            "title": "Organize my inbox и пакетное подтверждение",
+            "url": "https://www.shortwave.com/docs/guides/ai-assistant/",
+            "feature_summary": "Пользователь спрашивает AI организовать Inbox. Система предлагает группы действий: архивировать, удалить, назначить label, создать todo. Перед применением пользователь видит рекомендации и сохраняет контроль."
+          }
+        },
+        "control": {
+          "level": "documented",
+          "note": "AI предлагает массовые действия и пользователь подтверждает их перед применением.",
+          "evidence": {
+            "title": "Organize my inbox и пакетное подтверждение",
+            "url": "https://www.shortwave.com/docs/guides/ai-assistant/",
+            "feature_summary": "Пользователь спрашивает AI организовать Inbox. Система предлагает группы действий: архивировать, удалить, назначить label, создать todo. Перед применением пользователь видит рекомендации и сохраняет контроль."
+          }
+        }
+      }
+    },
+    {
+      "id": "sunsama",
+      "name": "Sunsama",
+      "group": "adjacent",
+      "audience": "Соло-профессионалы и небольшие команды с несколькими task источниками",
+      "position": "Лучший смежный референс для Today: от backlog к выполнимому дню",
+      "review_link": "./ionta-deep-dive.html?product=sunsama",
+      "assessments": {
+        "connect": {
+          "level": "partial",
+          "note": "Интеграция с Gmail есть, но второй канал мессенджера не подтверждён.",
+          "evidence": {
+            "title": "Email → Task с обратной ссылкой",
+            "url": "https://help.sunsama.com/docs/integrations/gmail/",
+            "feature_summary": "Панель Gmail в правой части Sunsama показывает письма с фильтрами. Можно перетащить email в task list, нажать Add to today или перетащить прямо в календарь. Task получает тему письма и встраивает исходный тред."
+          }
+        },
+        "client": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "request": {
+          "level": "documented",
+          "note": "Email → task с обратной ссылкой на исходный тред через явный drag/import.",
+          "evidence": {
+            "title": "Email → Task с обратной ссылкой",
+            "url": "https://help.sunsama.com/docs/integrations/gmail/",
+            "feature_summary": "Панель Gmail в правой части Sunsama показывает письма с фильтрами. Можно перетащить email в task list, нажать Add to today или перетащить прямо в календарь. Task получает тему письма и встраивает исходный тред."
+          }
+        },
+        "revision": {
+          "level": "partial",
+          "note": "Ручное merge задач существует, но автоматическую группировку ревизий не доказало.",
+          "evidence": {
+            "title": "Backlog, objectives и merge задач",
+            "url": "https://help.sunsama.com/docs/getting-started/basics/importing-and-creating-tasks/",
+            "feature_summary": "Backlog держит недатированные задачи; Weekly Objectives связывает day tasks с целями. Option/Alt + drag позволяет объединять задачи в subtask; источники из интеграций сохраняют иконки."
+          }
+        },
+        "turn": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "waiting": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "completion": {
+          "level": "partial",
+          "note": "Completion может синхронизировать действие назад в Gmail; завершение письма не равно approval клиента.",
+          "evidence": {
+            "title": "Completion automation для источника",
+            "url": "https://help.sunsama.com/docs/integrations/gmail/",
+            "feature_summary": "На импорт или завершение связанной задачи можно назначить автоматические действия с email; сохраняются действия Open in Gmail/Archive/Mark unread."
+          }
+        },
+        "today": {
+          "level": "documented",
+          "note": "Guided daily planning помогает выбрать ограниченный объём задач на день, timeboxing и перенос остального.",
+          "evidence": {
+            "title": "Guided daily planning",
+            "url": "https://help.sunsama.com/docs/getting-started/basics/daily-planning-the-basics/",
+            "feature_summary": "Sunsama предлагает выбрать цели на день из календаря, inbox интеграций, backlog и weekly objectives. Пользователь оценивает нагрузку, переносит лишнее, определяет порядок, заканчивает shutdown и начинает день."
+          }
+        },
+        "control": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        }
+      }
+    },
+    {
+      "id": "fyxer",
+      "name": "Fyxer",
+      "group": "adjacent",
+      "audience": "Владельцы бизнесов, консультанты и другие пользователи с большим количеством email/встреч",
+      "position": "Сильный AI-inbox конкурент за повседневное внимание, а не client work lifecycle",
+      "review_link": "./ionta-deep-dive.html?product=fyxer",
+      "assessments": {
+        "connect": {
+          "level": "partial",
+          "note": "Интеграции Gmail/Outlook; личный WhatsApp не подтверждён.",
+          "evidence": {
+            "title": "Автоматическая email-категоризация и drafts",
+            "url": "https://support.fyxer.com/article/set-up-fyxer-in-2-minutes",
+            "feature_summary": "После OAuth Fyxer классифицирует новые письма в Gmail/Outlook по To do/To respond, FYI, Marketing и т.п., предлагает черновики в стиле пользователя. Категоризация может затронуть последние 300 писем при настройке."
+          }
+        },
+        "client": {
+          "level": "partial",
+          "note": "Chat может искать обещания в письмах и встречах, но не сохраняет person-based work timeline как модель.",
+          "evidence": {
+            "title": "Fyxer Chat по почте, встречам и файлам",
+            "url": "https://support.fyxer.com/article/using-fyxer-chat-for-search-answers-and-drafting",
+            "feature_summary": "Пользователь может спросить, что обещал клиенту, какие решения приняты и что нужно сделать сегодня. Chat ищет в email, transcripts, calendar и загруженных документах."
+          }
+        },
+        "request": {
+          "level": "partial",
+          "note": "AI умеет отвечать, что было обещано, но не доказан устойчивый Task из каждой просьбы.",
+          "evidence": {
+            "title": "Fyxer Chat по почте, встречам и файлам",
+            "url": "https://support.fyxer.com/article/using-fyxer-chat-for-search-answers-and-drafting",
+            "feature_summary": "Пользователь может спросить, что обещал клиенту, какие решения приняты и что нужно сделать сегодня. Chat ищет в email, transcripts, calendar и загруженных документах."
+          }
+        },
+        "revision": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "turn": {
+          "level": "documented",
+          "note": "Awaiting Reply / Follow Up поддерживает отслеживание ожидаемого ответа email.",
+          "evidence": {
+            "title": "Awaiting Reply / To Follow Up",
+            "url": "https://support.fyxer.com/article/track-email-follow-ups",
+            "feature_summary": "Если на исходящее письмо нет ответа в течение заданного количества дней, Fyxer помечает thread Waiting/To follow up и создаёт follow-up draft. Пока срок не наступил, письмо остаётся в Sent."
+          }
+        },
+        "waiting": {
+          "level": "partial",
+          "note": "Отслеживание reply не означает ожидание файла, одобрения или оплаты.",
+          "evidence": {
+            "title": "Awaiting Reply / To Follow Up",
+            "url": "https://support.fyxer.com/article/track-email-follow-ups",
+            "feature_summary": "Если на исходящее письмо нет ответа в течение заданного количества дней, Fyxer помечает thread Waiting/To follow up и создаёт follow-up draft. Пока срок не наступил, письмо остаётся в Sent."
+          }
+        },
+        "completion": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "today": {
+          "level": "partial",
+          "note": "Есть Flows для Morning Briefing, но функция раскатывается постепенно и клиентская глубина не установлена.",
+          "evidence": {
+            "title": "Flows: triggers, actions, delivery",
+            "url": "https://support.fyxer.com/article/set-up-fyxer-flows",
+            "feature_summary": "Создаёт регулярные/событийные автоматизации: morning briefing, end-of-day summary, commitments-first meeting recap и CRM-less deal tracker. Доставка через email, Slack, Teams или in-app."
+          }
+        },
+        "control": {
+          "level": "partial",
+          "note": "Категоризацию можно настроить, но независимые отзывы сообщают о труднонаходимых перемещённых письмах.",
+          "evidence": {
+            "title": "Автоматическая email-категоризация и drafts",
+            "url": "https://support.fyxer.com/article/set-up-fyxer-in-2-minutes",
+            "feature_summary": "После OAuth Fyxer классифицирует новые письма в Gmail/Outlook по To do/To respond, FYI, Marketing и т.п., предлагает черновики в стиле пользователя. Категоризация может затронуть последние 300 писем при настройке."
+          }
+        }
+      }
+    },
+    {
+      "id": "canary",
+      "name": "Canary Mail",
+      "group": "adjacent",
+      "audience": "Фрилансеры, консультанты, клиентские менеджеры с несколькими email-аккаунтами",
+      "position": "Смежный AI email клиент с точным позиционированием для нескольких клиентов",
+      "review_link": "./ionta-deep-dive.html?product=canary",
+      "assessments": {
+        "connect": {
+          "level": "partial",
+          "note": "Несколько почтовых аккаунтов в unified inbox, но мессенджеры клиента не подтверждены.",
+          "evidence": {
+            "title": "Unified Inbox для рабочих и личных email",
+            "url": "https://canarymail.io/use-cases/email-app-for-freelancers-with-multiple-clients",
+            "feature_summary": "Поддерживает Gmail, Outlook, iCloud и другие совместимые email-аккаунты; позволяет фильтровать по домену/контакту, искать письма и аттачменты across accounts."
+          }
+        },
+        "client": {
+          "level": "partial",
+          "note": "Поиск/теги по контактам и аккаунтам, а не единая межканальная relationship timeline.",
+          "evidence": {
+            "title": "Unified Inbox для рабочих и личных email",
+            "url": "https://canarymail.io/use-cases/email-app-for-freelancers-with-multiple-clients",
+            "feature_summary": "Поддерживает Gmail, Outlook, iCloud и другие совместимые email-аккаунты; позволяет фильтровать по домену/контакту, искать письма и аттачменты across accounts."
+          }
+        },
+        "request": {
+          "level": "partial",
+          "note": "AI summaries и Mark as Done; формальные client asks из сообщений не подтверждены.",
+          "evidence": {
+            "title": "AI summary, drafts, Mark as Done",
+            "url": "https://canarymail.io/features/inbox-zero",
+            "feature_summary": "AI сокращает длинные треды и предлагает ответ, пользователь выбирает tone и review. Inbox Zero даёт Mark as Done, убирая обработанное письмо из active attention."
+          }
+        },
+        "revision": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "turn": {
+          "level": "partial",
+          "note": "Follow-up reminders есть в маркетинговом описании, но turn-state обязательств не проверен.",
+          "evidence": {
+            "title": "Follow-up reminders и client/project tags",
+            "url": "https://canarymail.io/use-cases/email-app-for-freelancers-with-multiple-clients",
+            "feature_summary": "Производитель описывает ручной follow-up на письме и правила через X дней без ответа; фриланс-страница упоминает теги и saved views по клиенту."
+          }
+        },
+        "waiting": {
+          "level": "partial",
+          "note": "Напоминание ответа не доказывает ожидание одобрения или материала.",
+          "evidence": {
+            "title": "Follow-up reminders и client/project tags",
+            "url": "https://canarymail.io/use-cases/email-app-for-freelancers-with-multiple-clients",
+            "feature_summary": "Производитель описывает ручной follow-up на письме и правила через X дней без ответа; фриланс-страница упоминает теги и saved views по клиенту."
+          }
+        },
+        "completion": {
+          "level": "partial",
+          "note": "Mark as Done закрывает письмо, не доставку и клиентское согласование.",
+          "evidence": {
+            "title": "AI summary, drafts, Mark as Done",
+            "url": "https://canarymail.io/features/inbox-zero",
+            "feature_summary": "AI сокращает длинные треды и предлагает ответ, пользователь выбирает tone и review. Inbox Zero даёт Mark as Done, убирая обработанное письмо из active attention."
+          }
+        },
+        "today": {
+          "level": "partial",
+          "note": "Inbox Zero уменьшает число активных писем, но не является daily task prioritization.",
+          "evidence": {
+            "title": "AI summary, drafts, Mark as Done",
+            "url": "https://canarymail.io/features/inbox-zero",
+            "feature_summary": "AI сокращает длинные треды и предлагает ответ, пользователь выбирает tone и review. Inbox Zero даёт Mark as Done, убирая обработанное письмо из active attention."
+          }
+        },
+        "control": {
+          "level": "partial",
+          "note": "AI можно использовать опционально, но механизм отмены ошибочного извлечения не проверен.",
+          "evidence": {
+            "title": "Privacy-first email controls",
+            "url": "https://canarymail.io/features",
+            "feature_summary": "Tracker blocking, encryption-oriented mail features and optional AI. Продукт может использоваться как обычный почтовый клиент, не навязывая AI."
+          }
+        }
+      }
+    },
+    {
+      "id": "kustomer",
+      "name": "Kustomer",
+      "group": "adjacent",
+      "audience": "Большие команды customer service и omnichannel support",
+      "position": "Архитектурный референс: timeline как модель данных и событий",
+      "review_link": "./ionta-deep-dive.html?product=kustomer",
+      "assessments": {
+        "connect": {
+          "level": "partial",
+          "note": "Омниканальность документирована, но доступ к личному WhatsApp фрилансера не подтверждён.",
+          "evidence": {
+            "title": "Единая хронология и custom objects",
+            "url": "https://help.kustomer.com/en_us/categories/navigate-timelines-BkSmbHD5ge",
+            "feature_summary": "Customer timeline показывает сообщения, заметки, связанные заказы и custom KObjects в хронологическом контексте с указанием канала. Разные типы событий доступны прямо из timeline."
+          }
+        },
+        "client": {
+          "level": "documented",
+          "note": "Customer timeline содержит сообщения и custom objects в хронологии клиента.",
+          "evidence": {
+            "title": "Единая хронология и custom objects",
+            "url": "https://help.kustomer.com/en_us/categories/navigate-timelines-BkSmbHD5ge",
+            "feature_summary": "Customer timeline показывает сообщения, заметки, связанные заказы и custom KObjects в хронологическом контексте с указанием канала. Разные типы событий доступны прямо из timeline."
+          }
+        },
+        "request": {
+          "level": "partial",
+          "note": "Custom objects/tasks могут отображать работу; AI-извлечение клиентской просьбы из сообщения не проверено.",
+          "evidence": {
+            "title": "Единая хронология и custom objects",
+            "url": "https://help.kustomer.com/en_us/categories/navigate-timelines-BkSmbHD5ge",
+            "feature_summary": "Customer timeline показывает сообщения, заметки, связанные заказы и custom KObjects в хронологическом контексте с указанием канала. Разные типы событий доступны прямо из timeline."
+          }
+        },
+        "revision": {
+          "level": "partial",
+          "note": "Фильтруются события и объекты; не показана одна сохраняемая цепочка уточнений client deliverable.",
+          "evidence": {
+            "title": "Фильтруемая timeline по бизнес-сущностям",
+            "url": "https://help.kustomer.com/en_us/categories/2026-release-notes-BygKsnW9g",
+            "feature_summary": "Обновление января 2026 добавило фильтрацию timeline по атрибутам conversations, tasks и custom objects — не нужно листать всю историю клиента ради одного вида события."
+          }
+        },
+        "turn": {
+          "level": "partial",
+          "note": "Workflow и статусы позволяют маршрутизацию, но автоматический two-sided turn не подтверждён.",
+          "evidence": {
+            "title": "Automation и управляемое ожидание",
+            "url": "https://help.kustomer.com/en_us/categories/workflows-H1AmBxrYel",
+            "feature_summary": "Workflows реагируют на входящие/статусные события, меняют assigned owner, обновляют поля, позволяют задавать snoozing, переоткрывать обращения и делать маршрутизацию."
+          }
+        },
+        "waiting": {
+          "level": "partial",
+          "note": "Snooze и workflow есть, ожидание результата клиента отдельно не установлено.",
+          "evidence": {
+            "title": "Automation и управляемое ожидание",
+            "url": "https://help.kustomer.com/en_us/categories/workflows-H1AmBxrYel",
+            "feature_summary": "Workflows реагируют на входящие/статусные события, меняют assigned owner, обновляют поля, позволяют задавать snoozing, переоткрывать обращения и делать маршрутизацию."
+          }
+        },
+        "completion": {
+          "level": "partial",
+          "note": "Видна история объектов и статусов, но реальное согласование работы требует UX-теста.",
+          "evidence": {
+            "title": "Automation и управляемое ожидание",
+            "url": "https://help.kustomer.com/en_us/categories/workflows-H1AmBxrYel",
+            "feature_summary": "Workflows реагируют на входящие/статусные события, меняют assigned owner, обновляют поля, позволяют задавать snoozing, переоткрывать обращения и делать маршрутизацию."
+          }
+        },
+        "today": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "control": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        }
+      }
+    },
+    {
+      "id": "carly",
+      "name": "Carly",
+      "group": "adjacent",
+      "audience": "Солопренёры, специалисты и малые команды с множеством рабочих аккаунтов",
+      "position": "Смежный AI-агент с более автономными действиями и многоаккаунтной интеграцией",
+      "review_link": "./ionta-deep-dive.html?product=carly",
+      "assessments": {
+        "connect": {
+          "level": "partial",
+          "note": "Заявлены несколько Gmail/Outlook аккаунтов и приложения; личный WhatsApp как входящий клиентский источник не подтверждён.",
+          "evidence": {
+            "title": "Cross-system automation + AI-native CRM",
+            "url": "https://www.usecarly.com/pricing/",
+            "feature_summary": "Официальная страница Personal описывает persistent memory, несколько Gmail/Outlook аккаунтов, app integrations, AI-native CRM и единую to-do систему across channels."
+          }
+        },
+        "client": {
+          "level": "partial",
+          "note": "AI-native CRM заявлена, детализация cross-channel записи требует проверки.",
+          "evidence": {
+            "title": "Cross-system automation + AI-native CRM",
+            "url": "https://www.usecarly.com/pricing/",
+            "feature_summary": "Официальная страница Personal описывает persistent memory, несколько Gmail/Outlook аккаунтов, app integrations, AI-native CRM и единую to-do систему across channels."
+          }
+        },
+        "request": {
+          "level": "partial",
+          "note": "Можно делегировать просьбу агенту через CC email, но автоматическое распознавание client ask не доказано.",
+          "evidence": {
+            "title": "Delegate by email CC or messaging",
+            "url": "https://www.usecarly.com/",
+            "feature_summary": "Пользователь добавляет Carly в переписку или пишет ему отдельно; AI координирует запись на встречу, напоминает о действиях, участвует в scheduling."
+          }
+        },
+        "revision": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "turn": {
+          "level": "partial",
+          "note": "Proactive follow-ups поддерживаются как агентная команда, не доказано устойчивое двустороннее состояние.",
+          "evidence": {
+            "title": "Proactive follow-up and scheduling",
+            "url": "https://www.usecarly.com/blog/best-ai-assistants-for-email-and-calendar/",
+            "feature_summary": "Агенту можно поручить сопровождать деловую коммуникацию, рассылать напоминания и договариваться о времени встречи на основе календаря."
+          }
+        },
+        "waiting": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "completion": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "today": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "control": {
+          "level": "partial",
+          "note": "Делегирование действий может включать отправку; granular approval и audit требуют проверки.",
+          "evidence": {
+            "title": "Delegate by email CC or messaging",
+            "url": "https://www.usecarly.com/",
+            "feature_summary": "Пользователь добавляет Carly в переписку или пишет ему отдельно; AI координирует запись на встречу, напоминает о действиях, участвует в scheduling."
+          }
+        }
+      }
+    },
+    {
+      "id": "agiled",
+      "name": "Agiled",
+      "group": "adjacent",
+      "audience": "Небольшие агентства, солопренёры, организации с CRM и финансовыми процессами",
+      "position": "Фриланс-бизнес OS / широта CRM, work, finance и client portal",
+      "review_link": "./ionta-deep-dive.html?product=agiled",
+      "assessments": {
+        "connect": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "client": {
+          "level": "documented",
+          "note": "CRM связывает контакт с deal/project и activity timeline.",
+          "evidence": {
+            "title": "CRM record с activity timeline",
+            "url": "https://agiled.app/features",
+            "feature_summary": "Контакты, accounts, deals и pipelines; contact record показывает связанную активность и контекст взаимодействий."
+          }
+        },
+        "request": {
+          "level": "partial",
+          "note": "Ticket можно создавать через client portal, но автоматическое извлечение из email/мессенджера не подтверждено.",
+          "evidence": {
+            "title": "Client portal и tickets",
+            "url": "https://agiled.app/features",
+            "feature_summary": "Позволяет клиенту просматривать проекты, оплачивать счета и создавать support tickets в брендированном портале."
+          }
+        },
+        "revision": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "turn": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "waiting": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "completion": {
+          "level": "partial",
+          "note": "Project workflow есть, но revisions/approval для единого обязательства не доказаны.",
+          "evidence": {
+            "title": "Invoices + projects + proposals",
+            "url": "https://agiled.app/features",
+            "feature_summary": "Управляет задачами, предложениями, договорами и инвойсами из единой базы."
+          }
+        },
+        "today": {
+          "level": "partial",
+          "note": "PM tasks есть, но единый client-aware daily focus не установлен.",
+          "evidence": {
+            "title": "Invoices + projects + proposals",
+            "url": "https://agiled.app/features",
+            "feature_summary": "Управляет задачами, предложениями, договорами и инвойсами из единой базы."
+          }
+        },
+        "control": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        }
+      }
+    },
+    {
+      "id": "plutio",
+      "name": "Plutio",
+      "group": "adjacent",
+      "audience": "Фрилансеры, малые бизнесы, небольшие агентства",
+      "position": "Фриланс-бизнес платформа с proposal-to-project и клиентскими порталами",
+      "review_link": "./ionta-deep-dive.html?product=plutio",
+      "assessments": {
+        "connect": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "client": {
+          "level": "documented",
+          "note": "Связанные записи клиента, project и invoices в workspace.",
+          "evidence": {
+            "title": "Client-centred business workspace",
+            "url": "https://www.plutio.com/freelancer-magazine/best-crm-software-for-freelancers",
+            "feature_summary": "CRM связывает contacts с proposals, contracts, projects, invoices и файлами в одном контексте."
+          }
+        },
+        "request": {
+          "level": "partial",
+          "note": "Portal feedback/tasks существует, но AI extraction из коммуникации не установлено.",
+          "evidence": {
+            "title": "Client portal и совместные request tasks",
+            "url": "https://www.g2.com/products/plutio/reviews",
+            "feature_summary": "Клиент может заходить в брендированный портал, видеть состояние работ и взаимодействовать с задачами/обращениями."
+          }
+        },
+        "revision": {
+          "level": "partial",
+          "note": "Шаблоны task flows есть, но версия scope одной работы не подтверждена.",
+          "evidence": {
+            "title": "Шаблоны проектов и invoice pipeline",
+            "url": "https://www.g2.com/products/plutio/reviews",
+            "feature_summary": "Пользователь повторно применяет шаблоны task flows, привязывает deliverables к оплате и времени."
+          }
+        },
+        "turn": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "waiting": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "completion": {
+          "level": "partial",
+          "note": "Portal и tasks есть; история approval/reopen по исходным сообщениям требует проверки.",
+          "evidence": {
+            "title": "Client portal и совместные request tasks",
+            "url": "https://www.g2.com/products/plutio/reviews",
+            "feature_summary": "Клиент может заходить в брендированный портал, видеть состояние работ и взаимодействовать с задачами/обращениями."
+          }
+        },
+        "today": {
+          "level": "partial",
+          "note": "Task planning есть, но объединение коммуникаций по отношениям не установлено.",
+          "evidence": {
+            "title": "Шаблоны проектов и invoice pipeline",
+            "url": "https://www.g2.com/products/plutio/reviews",
+            "feature_summary": "Пользователь повторно применяет шаблоны task flows, привязывает deliverables к оплате и времени."
+          }
+        },
+        "control": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        }
+      }
+    },
+    {
+      "id": "hermify",
+      "name": "Hermify",
+      "group": "adjacent",
+      "audience": "Самозанятые и операторы, которым нужен conversational assistant без отдельного UI",
+      "position": "Референс form factor: личный AI-агент в Telegram, а не client-work system",
+      "review_link": "./ionta-deep-dive.html?product=hermify",
+      "assessments": {
+        "connect": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "client": {
+          "level": "partial",
+          "note": "AI-agent заявляет память о проектах/контактах, но нет доказанного единого client timeline.",
+          "evidence": {
+            "title": "Постоянная память и skills",
+            "url": "https://www.hermify.io/en/blog/ai-agent-for-freelancers",
+            "feature_summary": "Hermes Agent сохраняет информацию о клиентах, проектах и предпочтениях и использует навыки для регулярных действий."
+          }
+        },
+        "request": {
+          "level": "partial",
+          "note": "AI может создавать reminder по команде, не подтверждён автоматический анализ клиентского inbox.",
+          "evidence": {
+            "title": "Drafts, reminders, research, follow-ups",
+            "url": "https://www.hermify.io/en",
+            "feature_summary": "Разработчик перечисляет поддерживаемые действия: составить follow-up, напомнить об инвойсе, конспектировать документы, готовить материалы."
+          }
+        },
+        "revision": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "turn": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "waiting": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "completion": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        },
+        "today": {
+          "level": "partial",
+          "note": "Заявлен Daily Brief в Telegram, но нет доказательства структуры приоритизации клиентских работ.",
+          "evidence": {
+            "title": "Мгновенное включение AI через Telegram",
+            "url": "https://www.hermify.io/en",
+            "feature_summary": "Пользователь оплачивает план, привязывает Telegram и получает персонального AI-агента. Можно говорить голосом, отправлять задачи, получать Daily Brief."
+          }
+        },
+        "control": {
+          "level": "unknown",
+          "note": "В просмотренных документах и отзывах для этого точного сценария нет достаточного подтверждения."
+        }
+      }
+    }
+  ],
+  "field_protocol": {
+    "method": "Провести один и тот же сценарий самостоятельно в продукте (или на демо), записав build/date/plan/region и реальные клики; «не удалось проверить» не равно «не поддерживается».",
+    "record_for_each": [
+      "Точная версия, план и дата",
+      "Скриншот и ссылка на исходник",
+      "Шаги пользователя и количество действий",
+      "Успешность цели и время (только после фактического измерения)",
+      "Где теряется контекст, какие сущности/дубли возникают",
+      "Что может сделать AI без подтверждения, источник и откат"
+    ],
+    "next_products": [
+      "alfred_",
+      "Moxie",
+      "folk",
+      "Missive",
+      "Front"
+    ],
+    "unobserved": "Все баллы и длительности оставлены пустыми до реальных прохождений."
+  }
+}
